@@ -73,6 +73,7 @@ Blockly.Dic.finish = function (a) {
 };
 Blockly.Dic.scrubNakedValue = function (a) {
     return a + ";\n"
+    //return a + "\n"
 };
 Blockly.Dic.quote_ = function (a) {
     a = a.replace(/\\/g, "\\\\").replace(/\n/g, "\\\n").replace(/'/g, "\\'");
@@ -108,7 +109,8 @@ Blockly.Dic.getAdjusted = function (a, b, c, d, e) {
         d && (a = c ? "-(" + a + ")" : "-" + a, g = Blockly.Dic.ORDER_UNARY_NEGATION);
         g = Math.floor(g);
         e = Math.floor(e);
-        g && e >= g && (a = "(" + a + ")")
+        /*g && e >= g && (a = "(" + a + ")")*/
+        g && e >= g && (a = "" + a + "")
     }
     return a
 };
@@ -849,7 +851,7 @@ Blockly.Dic.text_reverse = function (a) {
 
 Blockly.Dic.variables = {};
 Blockly.Dic.variables_get = function (a) {
-    return [Blockly.Dic.variableDB_.getName(a.getFieldValue("VAR"), Blockly.VARIABLE_CATEGORY_NAME), Blockly.Dic.ORDER_ATOMIC]
+    return ["@"+Blockly.Dic.variableDB_.getName(a.getFieldValue("VAR"), Blockly.VARIABLE_CATEGORY_NAME), Blockly.Dic.ORDER_ATOMIC]
 };
 Blockly.Dic.variables_set = function (a) {
     var b = Blockly.Dic.valueToCode(a, "VALUE", Blockly.Dic.ORDER_ASSIGNMENT) || "0";
@@ -877,9 +879,30 @@ Blockly.Dic['api_sendmsg'] = function (block) {
 };
 
 Blockly.Dic['getcode'] = function (block) {
-    var dropdown_name = block.getFieldValue('NAME');
+    var dropdown_name = block.getFieldValue('type');
     // TODO: Assemble Dic into code variable.
     var code = dropdown_name;
+    // TODO: Change ORDER_NONE to the correct strength.
+    return [code, Blockly.Dic.ORDER_NONE];
+};
+
+Blockly.Dic['toolkit_setconfig'] = function (block) {
+    var value_path = Blockly.Dic.valueToCode(block, 'path', Blockly.Dic.ORDER_ATOMIC);
+    var value_1 = Blockly.Dic.valueToCode(block, '1', Blockly.Dic.ORDER_ATOMIC);
+    var value_2 = Blockly.Dic.valueToCode(block, '2', Blockly.Dic.ORDER_ATOMIC);
+    var value_3 = Blockly.Dic.valueToCode(block, '3', Blockly.Dic.ORDER_ATOMIC);
+    // TODO: Assemble Dic into code variable.
+    var code = 'Toolkit->setConfig(' + value_path + '\\,' + value_1 + '\\,' + value_2 + '\\,' + value_3 + ')';
+    return code;
+};
+
+Blockly.Dic['toolkit_getconfig'] = function (block) {
+    var value_path = Blockly.Dic.valueToCode(block, 'path', Blockly.Dic.ORDER_ATOMIC);
+    var value_1 = Blockly.Dic.valueToCode(block, '1', Blockly.Dic.ORDER_ATOMIC);
+    var value_2 = Blockly.Dic.valueToCode(block, '2', Blockly.Dic.ORDER_ATOMIC);
+    var value_3 = Blockly.Dic.valueToCode(block, '3', Blockly.Dic.ORDER_ATOMIC);
+    // TODO: Assemble Dic into code variable.
+    var code = 'Toolkit->getConfig(' + value_path + '\\,' + value_1 + '\\,' + value_2 + '\\,' + value_3 + ')';
     // TODO: Change ORDER_NONE to the correct strength.
     return [code, Blockly.Dic.ORDER_NONE];
 };

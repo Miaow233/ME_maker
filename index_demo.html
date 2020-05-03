@@ -7,7 +7,7 @@
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
     <script src="./static/blockly_compressed.js"></script>
     <script src="./static/blocks_dic.js"></script>
-    <script src="./static/js/dic_compressed.js"></script>
+    <script src="./static/js/dic_compressed.js"></script><!--生成器-->
     <script src="./msg/js/zh-hans.js"></script>
     <script src="./static/acorn_interpreter.js"></script>
     <script src="./static/prettify-bundle.js"></script>
@@ -213,10 +213,13 @@
         </category>
 
         <script src="./blocks/Api.js"></script>
+        <script src="./blocks/ToolKit.js"></script>
         <category colour="290" name="Api">
             <block type="api_send"></block>
             <block type="api_sendmsg"></block>
             <block type="getcode"></block>
+            <block type="toolkit_setconfig"></block>
+            <block type="toolkit_getconfig"></block>
         </category>
         <category id="catVariables" colour="330" custom="VARIABLE" name="变量"></category>
     </xml>

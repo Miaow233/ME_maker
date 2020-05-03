@@ -46,7 +46,7 @@ Blockly.Blocks['getcode'] = {
                 ["发送者QQ", "@uin"],
                 ["消息内容", "@c0"],
                 ["消息ID", "Api->getMark()"]
-            ]), "NAME");
+            ]), "type");
         this.setOutput(true, null);
         this.setColour(210);
         this.setTooltip("");
