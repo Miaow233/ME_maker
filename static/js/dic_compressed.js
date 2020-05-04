@@ -851,58 +851,12 @@ Blockly.Dic.text_reverse = function (a) {
 
 Blockly.Dic.variables = {};
 Blockly.Dic.variables_get = function (a) {
-    return ["@"+Blockly.Dic.variableDB_.getName(a.getFieldValue("VAR"), Blockly.VARIABLE_CATEGORY_NAME), Blockly.Dic.ORDER_ATOMIC]
+    return ["@" + Blockly.Dic.variableDB_.getName(a.getFieldValue("VAR"), Blockly.VARIABLE_CATEGORY_NAME), Blockly.Dic.ORDER_ATOMIC]
 };
 Blockly.Dic.variables_set = function (a) {
-    var b = Blockly.Dic.valueToCode(a, "VALUE", Blockly.Dic.ORDER_ASSIGNMENT) || "0";
-    return "$" + Blockly.Dic.variableDB_.getName(a.getFieldValue("VAR"), Blockly.VARIABLE_CATEGORY_NAME) + ":" + b + "\n"
+    var b = Blockly.Dic.valueToCode(a, "VALUE", Blockly.Dic.ORDER_ATOMIC) || "0";
+    return "$" + Blockly.Dic.variableDB_.getName(a.getFieldValue("VAR"), Blockly.VARIABLE_CATEGORY_NAME) + ":" + b+"\n"
 };
 Blockly.Dic.variablesDynamic = {};
 Blockly.Dic.variables_get_dynamic = Blockly.Dic.variables_get;
 Blockly.Dic.variables_set_dynamic = Blockly.Dic.variables_set;
-
-
-
-Blockly.Dic['api_send'] = function (block) {
-    // TODO: Assemble Dic into code variable.
-    var code = 'Api->send()\n';
-    return code;
-};
-
-Blockly.Dic['api_sendmsg'] = function (block) {
-    var dropdown_name = block.getFieldValue('method');
-    var value_code = Blockly.Dic.valueToCode(block, 'code', Blockly.Dic.ORDER_ATOMIC);
-    var value_content = Blockly.Dic.valueToCode(block, 'content', Blockly.Dic.ORDER_ATOMIC);
-    // TODO: Assemble Dic into code variable.
-    var code = 'Api->sendMsg(' + value_content + ')\n';
-    return code;
-};
-
-Blockly.Dic['getcode'] = function (block) {
-    var dropdown_name = block.getFieldValue('type');
-    // TODO: Assemble Dic into code variable.
-    var code = dropdown_name;
-    // TODO: Change ORDER_NONE to the correct strength.
-    return [code, Blockly.Dic.ORDER_NONE];
-};
-
-Blockly.Dic['toolkit_setconfig'] = function (block) {
-    var value_path = Blockly.Dic.valueToCode(block, 'path', Blockly.Dic.ORDER_ATOMIC);
-    var value_1 = Blockly.Dic.valueToCode(block, '1', Blockly.Dic.ORDER_ATOMIC);
-    var value_2 = Blockly.Dic.valueToCode(block, '2', Blockly.Dic.ORDER_ATOMIC);
-    var value_3 = Blockly.Dic.valueToCode(block, '3', Blockly.Dic.ORDER_ATOMIC);
-    // TODO: Assemble Dic into code variable.
-    var code = 'Toolkit->setConfig(' + value_path + '\\,' + value_1 + '\\,' + value_2 + '\\,' + value_3 + ')';
-    return code;
-};
-
-Blockly.Dic['toolkit_getconfig'] = function (block) {
-    var value_path = Blockly.Dic.valueToCode(block, 'path', Blockly.Dic.ORDER_ATOMIC);
-    var value_1 = Blockly.Dic.valueToCode(block, '1', Blockly.Dic.ORDER_ATOMIC);
-    var value_2 = Blockly.Dic.valueToCode(block, '2', Blockly.Dic.ORDER_ATOMIC);
-    var value_3 = Blockly.Dic.valueToCode(block, '3', Blockly.Dic.ORDER_ATOMIC);
-    // TODO: Assemble Dic into code variable.
-    var code = 'Toolkit->getConfig(' + value_path + '\\,' + value_1 + '\\,' + value_2 + '\\,' + value_3 + ')';
-    // TODO: Change ORDER_NONE to the correct strength.
-    return [code, Blockly.Dic.ORDER_NONE];
-};
