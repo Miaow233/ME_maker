@@ -34,11 +34,23 @@
             <pre translate="no" dir="ltr"></pre>
         </div>
     </div>
+
     <xml id="toolbox" style="display: none">
-        <category colour="150" name="基础块">
+        <category colour="330" name="事件">
+            <block type="entry">
+                <value name="content">
+                    <shadow type="text">
+                        <field name="TEXT">消息内容</field>
+                    </shadow>
+                </value>
+            </block>
+        </category>
+        <category colour="160" name="文字">
             <block type="text">
                 <field name="TEXT">abc</field>
             </block>
+        </category>
+        <category colour="230" name="数学">
             <block type="math_number"></block>
         </category>
         <category colour="290" name="Api">
@@ -59,12 +71,10 @@
                     </block>
                 </value>
                 <value name="2">
-                    <block type="text">
-                    </block>
+                    <shadow type="text"></shadow>
                 </value>
                 <value name="3">
-                    <block type="text">
-                    </block>
+                    <shadow type="text"></shadow>
                 </value>
             </block>
             <block type="toolkit_getconfig">
@@ -79,17 +89,17 @@
                     </block>
                 </value>
                 <value name="2">
-                    <block type="text">
-                    </block>
+                    <shadow type="text"></shadow>
                 </value>
                 <value name="3">
-                    <block type="text">
-                    </block>
+                    <shadow type="text"></shadow>
                 </value>
             </block>
         </category>
+        <sep></sep>
         <category id="catVariables" colour="330" custom="VARIABLE" name="变量"></category>
     </xml>
+
     <!--引入块文件-->
     <script src="./blocks/Api.js"></script>
     <script src="./blocks/ToolKit.js"></script>

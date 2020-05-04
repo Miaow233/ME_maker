@@ -1,5 +1,15 @@
 'use strict';
 
+Blockly.Dic['entry'] = function (block) {
+    var dropdown_type = block.getFieldValue('type');
+    var value_content = Blockly.Dic.valueToCode(block, 'content', Blockly.Dic.ORDER_ATOMIC);
+    var statements_dic = Blockly.Dic.statementToCode(block, 'dic');
+    var dropdown_continue = block.getFieldValue('continue');
+    // TODO: Assemble Dic into code variable.
+    var code = dropdown_type + value_content + '\nApi->setContinue(' + dropdown_continue + ')\n' + statements_dic;
+    return code;
+};
+
 Blockly.Dic['api_send'] = function (block) {
     var code = 'Api->send()\n';
     return code;

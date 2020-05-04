@@ -2,56 +2,99 @@
 'use strict';
 
 
-Blockly.Dic = new Blockly.Generator("Dic");
-Blockly.Dic.addReservedWords("break,case,catch,class,const,continue,debugger,default,delete,do,else,export,extends,finally,for,function,if,import,in,instanceof,new,return,super,switch,this,throw,try,typeof,var,void,while,with,yield,enum,implements,interface,let,package,private,protected,public,static,await,null,true,false,arguments," + Object.getOwnPropertyNames(Blockly.utils.global).join(","));
-Blockly.Dic.ORDER_ATOMIC = 0;
-Blockly.Dic.ORDER_NEW = 1.1;
-Blockly.Dic.ORDER_MEMBER = 1.2;
-Blockly.Dic.ORDER_FUNCTION_CALL = 2;
-Blockly.Dic.ORDER_INCREMENT = 3;
-Blockly.Dic.ORDER_DECREMENT = 3;
-Blockly.Dic.ORDER_BITWISE_NOT = 4.1;
-Blockly.Dic.ORDER_UNARY_PLUS = 4.2;
-Blockly.Dic.ORDER_UNARY_NEGATION = 4.3;
-Blockly.Dic.ORDER_LOGICAL_NOT = 4.4;
-Blockly.Dic.ORDER_TYPEOF = 4.5;
-Blockly.Dic.ORDER_VOID = 4.6;
-Blockly.Dic.ORDER_DELETE = 4.7;
-Blockly.Dic.ORDER_AWAIT = 4.8;
-Blockly.Dic.ORDER_EXPONENTIATION = 5;
-Blockly.Dic.ORDER_MULTIPLICATION = 5.1;
-Blockly.Dic.ORDER_DIVISION = 5.2;
-Blockly.Dic.ORDER_MODULUS = 5.3;
-Blockly.Dic.ORDER_SUBTRACTION = 6.1;
-Blockly.Dic.ORDER_ADDITION = 6.2;
-Blockly.Dic.ORDER_BITWISE_SHIFT = 7;
-Blockly.Dic.ORDER_RELATIONAL = 8;
-Blockly.Dic.ORDER_IN = 8;
-Blockly.Dic.ORDER_INSTANCEOF = 8;
-Blockly.Dic.ORDER_EQUALITY = 9;
-Blockly.Dic.ORDER_BITWISE_AND = 10;
-Blockly.Dic.ORDER_BITWISE_XOR = 11;
-Blockly.Dic.ORDER_BITWISE_OR = 12;
-Blockly.Dic.ORDER_LOGICAL_AND = 13;
-Blockly.Dic.ORDER_LOGICAL_OR = 14;
-Blockly.Dic.ORDER_CONDITIONAL = 15;
-Blockly.Dic.ORDER_ASSIGNMENT = 16;
-Blockly.Dic.ORDER_YIELD = 17;
-Blockly.Dic.ORDER_COMMA = 18;
-Blockly.Dic.ORDER_NONE = 99;
+
+Blockly.Dic = new Blockly.Generator('Dic');
+
+/**
+ * List of illegal variable names.
+ * This is not intended to be a security feature.  Blockly is 100% client-side,
+ * so bypassing this list is trivial.  This is intended to prevent users from
+ * accidentally clobbering a built-in object or function.
+ * @private
+ */
+Blockly.Dic.addReservedWords(
+    // https://developer.mozilla.org/en-US/docs/Web/Dic/Reference/Lexical_grammar#Keywords
+    'break,case,catch,class,const,continue,debugger,default,delete,do,else,export,extends,finally,for,function,if,import,in,instanceof,new,return,super,switch,this,throw,try,typeof,var,void,while,with,yield,' +
+    'enum,' +
+    'implements,interface,let,package,private,protected,public,static,' +
+    'await,' +
+    'null,true,false,' +
+    // Magic variable.
+    'arguments,' +
+    // Everything in the current environment (835 items in Chrome, 104 in Node).
+    Object.getOwnPropertyNames(Blockly.utils.global).join(','));
+
+/**
+ * Order of operation ENUMs.
+ * https://developer.mozilla.org/en/Dic/Reference/Operators/Operator_Precedence
+ */
+Blockly.Dic.ORDER_ATOMIC = 0; // 0 "" ...
+Blockly.Dic.ORDER_NEW = 1.1; // new
+Blockly.Dic.ORDER_MEMBER = 1.2; // . []
+Blockly.Dic.ORDER_FUNCTION_CALL = 2; // ()
+Blockly.Dic.ORDER_INCREMENT = 3; // ++
+Blockly.Dic.ORDER_DECREMENT = 3; // --
+Blockly.Dic.ORDER_BITWISE_NOT = 4.1; // ~
+Blockly.Dic.ORDER_UNARY_PLUS = 4.2; // +
+Blockly.Dic.ORDER_UNARY_NEGATION = 4.3; // -
+Blockly.Dic.ORDER_LOGICAL_NOT = 4.4; // !
+Blockly.Dic.ORDER_TYPEOF = 4.5; // typeof
+Blockly.Dic.ORDER_VOID = 4.6; // void
+Blockly.Dic.ORDER_DELETE = 4.7; // delete
+Blockly.Dic.ORDER_AWAIT = 4.8; // await
+Blockly.Dic.ORDER_EXPONENTIATION = 5.0; // **
+Blockly.Dic.ORDER_MULTIPLICATION = 5.1; // *
+Blockly.Dic.ORDER_DIVISION = 5.2; // /
+Blockly.Dic.ORDER_MODULUS = 5.3; // %
+Blockly.Dic.ORDER_SUBTRACTION = 6.1; // -
+Blockly.Dic.ORDER_ADDITION = 6.2; // +
+Blockly.Dic.ORDER_BITWISE_SHIFT = 7; // << >> >>>
+Blockly.Dic.ORDER_RELATIONAL = 8; // < <= > >=
+Blockly.Dic.ORDER_IN = 8; // in
+Blockly.Dic.ORDER_INSTANCEOF = 8; // instanceof
+Blockly.Dic.ORDER_EQUALITY = 9; // == != === !==
+Blockly.Dic.ORDER_BITWISE_AND = 10; // &
+Blockly.Dic.ORDER_BITWISE_XOR = 11; // ^
+Blockly.Dic.ORDER_BITWISE_OR = 12; // |
+Blockly.Dic.ORDER_LOGICAL_AND = 13; // &&
+Blockly.Dic.ORDER_LOGICAL_OR = 14; // ||
+Blockly.Dic.ORDER_CONDITIONAL = 15; // ?:
+Blockly.Dic.ORDER_ASSIGNMENT = 16; // = += -= **= *= /= %= <<= >>= ...
+Blockly.Dic.ORDER_YIELD = 17; // yield
+Blockly.Dic.ORDER_COMMA = 18; // ,
+Blockly.Dic.ORDER_NONE = 99; // (...)
+
+/**
+ * List of outer-inner pairings that do NOT require parentheses.
+ * @type {!Array.<!Array.<number>>}
+ */
 Blockly.Dic.ORDER_OVERRIDES = [
+    // (foo()).bar -> foo().bar
+    // (foo())[0] -> foo()[0]
     [Blockly.Dic.ORDER_FUNCTION_CALL, Blockly.Dic.ORDER_MEMBER],
+    // (foo())() -> foo()()
     [Blockly.Dic.ORDER_FUNCTION_CALL, Blockly.Dic.ORDER_FUNCTION_CALL],
+    // (foo.bar).baz -> foo.bar.baz
+    // (foo.bar)[0] -> foo.bar[0]
+    // (foo[0]).bar -> foo[0].bar
+    // (foo[0])[1] -> foo[0][1]
     [Blockly.Dic.ORDER_MEMBER, Blockly.Dic.ORDER_MEMBER],
+    // (foo.bar)() -> foo.bar()
+    // (foo[0])() -> foo[0]()
     [Blockly.Dic.ORDER_MEMBER, Blockly.Dic.ORDER_FUNCTION_CALL],
+
+    // !(!foo) -> !!foo
     [Blockly.Dic.ORDER_LOGICAL_NOT, Blockly.Dic.ORDER_LOGICAL_NOT],
+    // a * (b * c) -> a * b * c
     [Blockly.Dic.ORDER_MULTIPLICATION, Blockly.Dic.ORDER_MULTIPLICATION],
-    [Blockly.Dic.ORDER_ADDITION,
-        Blockly.Dic.ORDER_ADDITION
-    ],
+    // a + (b + c) -> a + b + c
+    [Blockly.Dic.ORDER_ADDITION, Blockly.Dic.ORDER_ADDITION],
+    // a && (b && c) -> a && b && c
     [Blockly.Dic.ORDER_LOGICAL_AND, Blockly.Dic.ORDER_LOGICAL_AND],
+    // a || (b || c) -> a || b || c
     [Blockly.Dic.ORDER_LOGICAL_OR, Blockly.Dic.ORDER_LOGICAL_OR]
 ];
+
 Blockly.Dic.init = function (a) {
     Blockly.Dic.definitions_ = Object.create(null);
     Blockly.Dic.functionNames_ = Object.create(null);
@@ -114,210 +157,6 @@ Blockly.Dic.getAdjusted = function (a, b, c, d, e) {
     }
     return a
 };
-/*Blockly.Dic.colour = {};
-Blockly.Dic.colour_picker = function (a) {
-    return [Blockly.Dic.quote_(a.getFieldValue("COLOUR")), Blockly.Dic.ORDER_ATOMIC]
-};
-Blockly.Dic.colour_random = function (a) {
-    return [Blockly.Dic.provideFunction_("colourRandom", ["function " + Blockly.Dic.FUNCTION_NAME_PLACEHOLDER_ + "() {", "  var num = Math.floor(Math.random() * Math.pow(2, 24));", "  return '#' + ('00000' + num.toString(16)).substr(-6);", "}"]) + "()", Blockly.Dic.ORDER_FUNCTION_CALL]
-};
-Blockly.Dic.colour_rgb = function (a) {
-    var b = Blockly.Dic.valueToCode(a, "RED", Blockly.Dic.ORDER_COMMA) || 0,
-        c = Blockly.Dic.valueToCode(a, "GREEN", Blockly.Dic.ORDER_COMMA) || 0;
-    a = Blockly.Dic.valueToCode(a, "BLUE", Blockly.Dic.ORDER_COMMA) || 0;
-    return [Blockly.Dic.provideFunction_("colourRgb", ["function " + Blockly.Dic.FUNCTION_NAME_PLACEHOLDER_ + "(r, g, b) {", "  r = Math.max(Math.min(Number(r), 100), 0) * 2.55;", "  g = Math.max(Math.min(Number(g), 100), 0) * 2.55;",
-        "  b = Math.max(Math.min(Number(b), 100), 0) * 2.55;", "  r = ('0' + (Math.round(r) || 0).toString(16)).slice(-2);", "  g = ('0' + (Math.round(g) || 0).toString(16)).slice(-2);", "  b = ('0' + (Math.round(b) || 0).toString(16)).slice(-2);", "  return '#' + r + g + b;", "}"
-    ]) + "(" + b + ", " + c + ", " + a + ")", Blockly.Dic.ORDER_FUNCTION_CALL]
-};
-Blockly.Dic.colour_blend = function (a) {
-    var b = Blockly.Dic.valueToCode(a, "COLOUR1", Blockly.Dic.ORDER_COMMA) || "'#000000'",
-        c = Blockly.Dic.valueToCode(a, "COLOUR2", Blockly.Dic.ORDER_COMMA) || "'#000000'";
-    a = Blockly.Dic.valueToCode(a, "RATIO", Blockly.Dic.ORDER_COMMA) || .5;
-    return [Blockly.Dic.provideFunction_("colourBlend", ["function " + Blockly.Dic.FUNCTION_NAME_PLACEHOLDER_ + "(c1, c2, ratio) {", "  ratio = Math.max(Math.min(Number(ratio), 1), 0);", "  var r1 = parseInt(c1.substring(1, 3), 16);",
-        "  var g1 = parseInt(c1.substring(3, 5), 16);", "  var b1 = parseInt(c1.substring(5, 7), 16);", "  var r2 = parseInt(c2.substring(1, 3), 16);", "  var g2 = parseInt(c2.substring(3, 5), 16);", "  var b2 = parseInt(c2.substring(5, 7), 16);", "  var r = Math.round(r1 * (1 - ratio) + r2 * ratio);", "  var g = Math.round(g1 * (1 - ratio) + g2 * ratio);", "  var b = Math.round(b1 * (1 - ratio) + b2 * ratio);", "  r = ('0' + (r || 0).toString(16)).slice(-2);", "  g = ('0' + (g || 0).toString(16)).slice(-2);", "  b = ('0' + (b || 0).toString(16)).slice(-2);",
-        "  return '#' + r + g + b;", "}"
-    ]) + "(" + b + ", " + c + ", " + a + ")", Blockly.Dic.ORDER_FUNCTION_CALL]
-};
-Blockly.Dic.lists = {};
-Blockly.Dic.lists_create_empty = function (a) {
-    return ["[]", Blockly.Dic.ORDER_ATOMIC]
-};
-Blockly.Dic.lists_create_with = function (a) {
-    for (var b = Array(a.itemCount_), c = 0; c < a.itemCount_; c++) b[c] = Blockly.Dic.valueToCode(a, "ADD" + c, Blockly.Dic.ORDER_COMMA) || "null";
-    return ["[" + b.join(", ") + "]", Blockly.Dic.ORDER_ATOMIC]
-};
-Blockly.Dic.lists_repeat = function (a) {
-    var b = Blockly.Dic.provideFunction_("listsRepeat", ["function " + Blockly.Dic.FUNCTION_NAME_PLACEHOLDER_ + "(value, n) {", "  var array = [];", "  for (var i = 0; i < n; i++) {", "    array[i] = value;", "  }", "  return array;", "}"]),
-        c = Blockly.Dic.valueToCode(a, "ITEM", Blockly.Dic.ORDER_COMMA) || "null";
-    a = Blockly.Dic.valueToCode(a, "NUM", Blockly.Dic.ORDER_COMMA) || "0";
-    return [b + "(" + c + ", " + a + ")", Blockly.Dic.ORDER_FUNCTION_CALL]
-};
-Blockly.Dic.lists_length = function (a) {
-    return [(Blockly.Dic.valueToCode(a, "VALUE", Blockly.Dic.ORDER_MEMBER) || "[]") + ".length", Blockly.Dic.ORDER_MEMBER]
-};
-Blockly.Dic.lists_isEmpty = function (a) {
-    return ["!" + (Blockly.Dic.valueToCode(a, "VALUE", Blockly.Dic.ORDER_MEMBER) || "[]") + ".length", Blockly.Dic.ORDER_LOGICAL_NOT]
-};
-Blockly.Dic.lists_indexOf = function (a) {
-    var b = "FIRST" == a.getFieldValue("END") ? "indexOf" : "lastIndexOf",
-        c = Blockly.Dic.valueToCode(a, "FIND", Blockly.Dic.ORDER_NONE) || "''";
-    b = (Blockly.Dic.valueToCode(a, "VALUE", Blockly.Dic.ORDER_MEMBER) || "[]") + "." + b + "(" + c + ")";
-    return a.workspace.options.oneBasedIndex ? [b + " + 1", Blockly.Dic.ORDER_ADDITION] : [b, Blockly.Dic.ORDER_FUNCTION_CALL]
-};
-Blockly.Dic.lists_getIndex = function (a) {
-    var b = a.getFieldValue("MODE") || "GET",
-        c = a.getFieldValue("WHERE") || "FROM_START",
-        d = Blockly.Dic.valueToCode(a, "VALUE", "RANDOM" == c ? Blockly.Dic.ORDER_COMMA : Blockly.Dic.ORDER_MEMBER) || "[]";
-    switch (c) {
-        case "FIRST":
-            if ("GET" == b) return [d + "[0]", Blockly.Dic.ORDER_MEMBER];
-            if ("GET_REMOVE" == b) return [d + ".shift()", Blockly.Dic.ORDER_MEMBER];
-            if ("REMOVE" == b) return d + ".shift();\n";
-            break;
-        case "LAST":
-            if ("GET" == b) return [d + ".slice(-1)[0]", Blockly.Dic.ORDER_MEMBER];
-            if ("GET_REMOVE" == b) return [d + ".pop()", Blockly.Dic.ORDER_MEMBER];
-            if ("REMOVE" == b) return d + ".pop();\n";
-            break;
-        case "FROM_START":
-            a = Blockly.Dic.getAdjusted(a, "AT");
-            if ("GET" == b) return [d + "[" + a + "]", Blockly.Dic.ORDER_MEMBER];
-            if ("GET_REMOVE" == b) return [d + ".splice(" + a + ", 1)[0]", Blockly.Dic.ORDER_FUNCTION_CALL];
-            if ("REMOVE" == b) return d + ".splice(" + a + ", 1);\n";
-            break;
-        case "FROM_END":
-            a = Blockly.Dic.getAdjusted(a, "AT", 1, !0);
-            if ("GET" == b) return [d + ".slice(" + a + ")[0]", Blockly.Dic.ORDER_FUNCTION_CALL];
-            if ("GET_REMOVE" == b) return [d + ".splice(" + a + ", 1)[0]", Blockly.Dic.ORDER_FUNCTION_CALL];
-            if ("REMOVE" == b) return d + ".splice(" + a + ", 1);";
-            break;
-        case "RANDOM":
-            d = Blockly.Dic.provideFunction_("listsGetRandomItem", ["function " + Blockly.Dic.FUNCTION_NAME_PLACEHOLDER_ + "(list, remove) {", "  var x = Math.floor(Math.random() * list.length);", "  if (remove) {", "    return list.splice(x, 1)[0];", "  } else {", "    return list[x];", "  }", "}"]) + "(" + d + ", " + ("GET" != b) + ")";
-            if ("GET" == b || "GET_REMOVE" == b) return [d,
-                Blockly.Dic.ORDER_FUNCTION_CALL
-            ];
-            if ("REMOVE" == b) return d + ";\n"
-    }
-    throw Error("Unhandled combination (lists_getIndex).");
-};
-Blockly.Dic.lists_setIndex = function (a) {
-    function b() {
-        if (c.match(/^\w+$/)) return "";
-        var a = Blockly.Dic.variableDB_.getDistinctName("tmpList", Blockly.VARIABLE_CATEGORY_NAME),
-            b = "var " + a + " = " + c + ";\n";
-        c = a;
-        return b
-    }
-    var c = Blockly.Dic.valueToCode(a, "LIST", Blockly.Dic.ORDER_MEMBER) || "[]",
-        d = a.getFieldValue("MODE") || "GET",
-        e = a.getFieldValue("WHERE") || "FROM_START",
-        f = Blockly.Dic.valueToCode(a, "TO", Blockly.Dic.ORDER_ASSIGNMENT) || "null";
-    switch (e) {
-        case "FIRST":
-            if ("SET" == d) return c +
-                "[0] = " + f + ";\n";
-            if ("INSERT" == d) return c + ".unshift(" + f + ");\n";
-            break;
-        case "LAST":
-            if ("SET" == d) return a = b(), a + (c + "[" + c + ".length - 1] = " + f + ";\n");
-            if ("INSERT" == d) return c + ".push(" + f + ");\n";
-            break;
-        case "FROM_START":
-            e = Blockly.Dic.getAdjusted(a, "AT");
-            if ("SET" == d) return c + "[" + e + "] = " + f + ";\n";
-            if ("INSERT" == d) return c + ".splice(" + e + ", 0, " + f + ");\n";
-            break;
-        case "FROM_END":
-            e = Blockly.Dic.getAdjusted(a, "AT", 1, !1, Blockly.Dic.ORDER_SUBTRACTION);
-            a = b();
-            if ("SET" == d) return a + (c + "[" + c + ".length - " + e +
-                "] = " + f + ";\n");
-            if ("INSERT" == d) return a + (c + ".splice(" + c + ".length - " + e + ", 0, " + f + ");\n");
-            break;
-        case "RANDOM":
-            a = b();
-            e = Blockly.Dic.variableDB_.getDistinctName("tmpX", Blockly.VARIABLE_CATEGORY_NAME);
-            a += "var " + e + " = Math.floor(Math.random() * " + c + ".length);\n";
-            if ("SET" == d) return a + (c + "[" + e + "] = " + f + ";\n");
-            if ("INSERT" == d) return a + (c + ".splice(" + e + ", 0, " + f + ");\n")
-    }
-    throw Error("Unhandled combination (lists_setIndex).");
-};
-Blockly.Dic.lists.getIndex_ = function (a, b, c) {
-    return "FIRST" == b ? "0" : "FROM_END" == b ? a + ".length - 1 - " + c : "LAST" == b ? a + ".length - 1" : c
-};
-Blockly.Dic.lists_getSublist = function (a) {
-    var b = Blockly.Dic.valueToCode(a, "LIST", Blockly.Dic.ORDER_MEMBER) || "[]",
-        c = a.getFieldValue("WHERE1"),
-        d = a.getFieldValue("WHERE2");
-    if ("FIRST" == c && "LAST" == d) b += ".slice(0)";
-    else if (b.match(/^\w+$/) || "FROM_END" != c && "FROM_START" == d) {
-        switch (c) {
-            case "FROM_START":
-                var e = Blockly.Dic.getAdjusted(a, "AT1");
-                break;
-            case "FROM_END":
-                e = Blockly.Dic.getAdjusted(a, "AT1", 1, !1, Blockly.Dic.ORDER_SUBTRACTION);
-                e = b + ".length - " + e;
-                break;
-            case "FIRST":
-                e =
-                    "0";
-                break;
-            default:
-                throw Error("Unhandled option (lists_getSublist).");
-        }
-        switch (d) {
-            case "FROM_START":
-                a = Blockly.Dic.getAdjusted(a, "AT2", 1);
-                break;
-            case "FROM_END":
-                a = Blockly.Dic.getAdjusted(a, "AT2", 0, !1, Blockly.Dic.ORDER_SUBTRACTION);
-                a = b + ".length - " + a;
-                break;
-            case "LAST":
-                a = b + ".length";
-                break;
-            default:
-                throw Error("Unhandled option (lists_getSublist).");
-        }
-        b = b + ".slice(" + e + ", " + a + ")"
-    } else {
-        e = Blockly.Dic.getAdjusted(a, "AT1");
-        a = Blockly.Dic.getAdjusted(a, "AT2");
-        var f = Blockly.Dic.lists.getIndex_,
-            g = {
-                FIRST: "First",
-                LAST: "Last",
-                FROM_START: "FromStart",
-                FROM_END: "FromEnd"
-            };
-        b = Blockly.Dic.provideFunction_("subsequence" + g[c] + g[d], ["function " + Blockly.Dic.FUNCTION_NAME_PLACEHOLDER_ + "(sequence" + ("FROM_END" == c || "FROM_START" == c ? ", at1" : "") + ("FROM_END" == d || "FROM_START" == d ? ", at2" : "") + ") {", "  var start = " + f("sequence", c, "at1") + ";", "  var end = " + f("sequence", d, "at2") + " + 1;", "  return sequence.slice(start, end);", "}"]) + "(" + b + ("FROM_END" == c || "FROM_START" == c ? ", " + e : "") + ("FROM_END" == d || "FROM_START" ==
-            d ? ", " + a : "") + ")"
-    }
-    return [b, Blockly.Dic.ORDER_FUNCTION_CALL]
-};
-Blockly.Dic.lists_sort = function (a) {
-    var b = Blockly.Dic.valueToCode(a, "LIST", Blockly.Dic.ORDER_FUNCTION_CALL) || "[]",
-        c = "1" === a.getFieldValue("DIRECTION") ? 1 : -1;
-    a = a.getFieldValue("TYPE");
-    var d = Blockly.Dic.provideFunction_("listsGetSortCompare", ["function " + Blockly.Dic.FUNCTION_NAME_PLACEHOLDER_ + "(type, direction) {", "  var compareFuncs = {", '    "NUMERIC": function(a, b) {', "        return Number(a) - Number(b); },", '    "TEXT": function(a, b) {', "        return a.toString() > b.toString() ? 1 : -1; },",
-        '    "IGNORE_CASE": function(a, b) {', "        return a.toString().toLowerCase() > b.toString().toLowerCase() ? 1 : -1; },", "  };", "  var compare = compareFuncs[type];", "  return function(a, b) { return compare(a, b) * direction; }", "}"
-    ]);
-    return [b + ".slice().sort(" + d + '("' + a + '", ' + c + "))", Blockly.Dic.ORDER_FUNCTION_CALL]
-};
-Blockly.Dic.lists_split = function (a) {
-    var b = Blockly.Dic.valueToCode(a, "INPUT", Blockly.Dic.ORDER_MEMBER),
-        c = Blockly.Dic.valueToCode(a, "DELIM", Blockly.Dic.ORDER_NONE) || "''";
-    a = a.getFieldValue("MODE");
-    if ("SPLIT" == a) b || (b = "''"), a = "split";
-    else if ("JOIN" == a) b || (b = "[]"), a = "join";
-    else throw Error("Unknown mode: " + a);
-    return [b + "." + a + "(" + c + ")", Blockly.Dic.ORDER_FUNCTION_CALL]
-};
-Blockly.Dic.lists_reverse = function (a) {
-    return [(Blockly.Dic.valueToCode(a, "LIST", Blockly.Dic.ORDER_FUNCTION_CALL) || "[]") + ".slice().reverse()", Blockly.Dic.ORDER_FUNCTION_CALL]
-};*/
 Blockly.Dic.logic = {};
 Blockly.Dic.controls_if = function (a) {
     var b = 0,
@@ -647,6 +486,8 @@ Blockly.Dic.math_atan2 = function (a) {
     var b = Blockly.Dic.valueToCode(a, "X", Blockly.Dic.ORDER_COMMA) || "0";
     return ["Math.atan2(" + (Blockly.Dic.valueToCode(a, "Y", Blockly.Dic.ORDER_COMMA) || "0") + ", " + b + ") / Math.PI * 180", Blockly.Dic.ORDER_DIVISION]
 };
+
+
 Blockly.Dic.procedures = {};
 Blockly.Dic.procedures_defreturn = function (a) {
     var b = Blockly.Dic.variableDB_.getName(a.getFieldValue("NAME"), Blockly.PROCEDURE_CATEGORY_NAME),
@@ -674,7 +515,7 @@ Blockly.Dic.procedures_callreturn = function (a) {
     return [b + "(" + c.join(", ") + ")", Blockly.Dic.ORDER_FUNCTION_CALL]
 };
 Blockly.Dic.procedures_callnoreturn = function (a) {
-    return Blockly.Dic.procedures_callreturn(a)[0] + ";\n"
+    return Blockly.Dic.procedures_callreturn(a)[0] + "\n"
 };
 Blockly.Dic.procedures_ifreturn = function (a) {
     var b = "if (" + (Blockly.Dic.valueToCode(a, "CONDITION", Blockly.Dic.ORDER_NONE) || "false") + ") {\n";
@@ -683,6 +524,8 @@ Blockly.Dic.procedures_ifreturn = function (a) {
         "return;\n";
     return b + "}\n"
 };
+
+
 Blockly.Dic.texts = {};
 Blockly.Dic.text = function (a) {
     return [Blockly.Dic.quote_(a.getFieldValue("TEXT")), Blockly.Dic.ORDER_ATOMIC]
@@ -855,7 +698,7 @@ Blockly.Dic.variables_get = function (a) {
 };
 Blockly.Dic.variables_set = function (a) {
     var b = Blockly.Dic.valueToCode(a, "VALUE", Blockly.Dic.ORDER_ATOMIC) || "0";
-    return "$" + Blockly.Dic.variableDB_.getName(a.getFieldValue("VAR"), Blockly.VARIABLE_CATEGORY_NAME) + ":" + b+"\n"
+    return "$" + Blockly.Dic.variableDB_.getName(a.getFieldValue("VAR"), Blockly.VARIABLE_CATEGORY_NAME) + ":" + b + "\n"
 };
 Blockly.Dic.variablesDynamic = {};
 Blockly.Dic.variables_get_dynamic = Blockly.Dic.variables_get;
