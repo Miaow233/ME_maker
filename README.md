@@ -1,2 +1,2 @@
 # ME_maker
-Medic可视化编辑器
+MedicJS可视化编辑器
