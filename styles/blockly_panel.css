@@ -8,7 +8,7 @@
   right: 0;
   overflow: visible;
   background-color: #0097a7;
-  box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+  box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28);
   margin: 10px;
 }
 
@@ -21,17 +21,24 @@
 .blockly-panel {
   left: 8px;
   right: 8px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.37);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .37);
+  /*display: none !important;*/
 }
 
 .output-panel {
+  /*left: 8px;*/
   right: 8px;
   width: 282px;
   background-color: white;
   overflow: scroll;
   padding: 8px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.37);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .37);
   display: none;
+}
+
+.code_output {
+  width: 100%;
+  height: 95%;
 }
 
 .dropdown-bar {
@@ -59,19 +66,19 @@
 .POps {
   height: 1px;
   border: 0;
-  background-color: rgba(0,0,0,.2);
+  background-color: rgba(0, 0, 0, .2);
 }
 
 .play-button {
   position: absolute;
-  bottom: 24px;
-  right: 24px;
+  bottom: 10px;
+  right: 10px;
   border-radius: 100%;
   color: white;
-  width: 56px;
-  height: 56px;
-  line-height: 56px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.37);
+  width: 50px;
+  height: 50px;
+  line-height: 42px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .37);
   transition: box-shadow .3s ease-in-out;
   text-align: center;
   font-weight: 500;
@@ -80,12 +87,35 @@
 }
 
 .play-button:hover {
-  box-shadow: 0 2px 2px rgba(0,0,0,.2),0 6px 10px rgba(0,0,0,.3);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, .2), 0 6px 10px rgba(0, 0, 0, .3);
   transition: box-shadow .3s ease-in-out;
+}
+
+.clipboard-btn {
+  position: absolute;
+  bottom: 80px;
+  right: 10px;
+  color: white;
+  width: 50px;
+  height: 50px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .37);
+  transition: box-shadow .3s ease-in-out;
+  text-align: center;
+  font-weight: 500;
+  background-color: #0097A7;
+  cursor: pointer;
 }
 
 .but-not-that-pretty {
   border: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
+}
+
+.blocklyScrollbarHandle {
+  display: none;
+}
+
+.blocklyTrash {
+  display: none;
 }
