@@ -52,3 +52,16 @@ function createAndDownloadFile(fileName, content) {
     aTag.click();
     URL.revokeObjectURL(blob);
 }
+
+
+function load() {
+    var xml_text = window.prompt('输入xml');
+    if (xml_text == null || xml_text == '') {
+        window.alert("已取消！");
+    } else if (xml_text.slice(0, 55) != '<xml xmlns="https://developers.google.com/blockly/xml">' || xml_text.slice(xml_text.length - 6, xml_text.length) != '</xml>') {
+        window.alert("不是xml或xml有误！");
+    } else {
+        var xml = Blockly.Xml.textToDom(xml_text);
+        Blockly.Xml.domToWorkspace(xml, workspace);
+    }
+};
