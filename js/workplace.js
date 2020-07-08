@@ -1,3 +1,5 @@
+'use strict';
+
 var showCode = 'code';
 
 function myUpdateFunction(event) {
