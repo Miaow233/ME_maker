@@ -1,41 +1,39 @@
-var workspace = Blockly.inject('blocklyDiv', {
-    toolbox: document.getElementById('toolbox'),
-    media: 'media/',
-    grid: {
-        spacing: 20,
-        length: 3,
-        colour: '#ccc',
-        snap: true
-    },
-    zoom: {
-        controls: true,
-        wheel: true,
-        startScale: 1.0,
-        maxScale: 3,
-        minScale: 0.3,
-        scaleSpeed: 1.2
-    },
-    trashcan: true
-});
+var showCode = 'code';
 
 function myUpdateFunction(event) {
-    var languageDropdown = document.getElementById('languageDropdown');
-    var languageSelection = languageDropdown.options[languageDropdown.selectedIndex].value;
-    var codeDiv = document.getElementById('codeDiv');
-    var codeHolder = document.createElement('pre');
-    codeHolder.className = 'prettyprint but-not-that-pretty';
-    codeHolder.id = 'xml_out';
-    var code = document.createTextNode(Blockly[languageSelection].workspaceToCode(workspace));
-    codeHolder.appendChild(code);
-    codeDiv.replaceChild(codeHolder, codeDiv.lastElementChild);
-    prettyPrint();
+    if (showCode == 'code') {
+        var languageDropdown = document.getElementById('languageDropdown');
+        var languageSelection = languageDropdown.options[languageDropdown.selectedIndex].value;
+        var codeDiv = document.getElementById('codeDiv');
+        var codeHolder = document.createElement('pre');
+        codeHolder.className = 'prettyprint but-not-that-pretty';
+        codeHolder.id = 'xml_out';
+        var code = document.createTextNode(Blockly[languageSelection].workspaceToCode(Code.workspace));
+        codeHolder.appendChild(code);
+        codeDiv.replaceChild(codeHolder, codeDiv.lastElementChild);
+        prettyPrint();
+    } else {}
 }
-workspace.addChangeListener(myUpdateFunction);
 
-function save() {
+setInterval(myUpdateFunction, 1000);
 
-    var xmlcontent = Blockly.Xml.workspaceToDom(workspace);
-    var xml_text = Blockly.Xml.domToText(xmlcontent);
+function showXml() {
+    if (showCode == 'xml') {
+        showCode = 'code';
+        myUpdateFunction;
+    } else {
+        showCode = 'xml';
+        var xmlcontent = Blockly.Xml.workspaceToDom(Code.workspace);
+        var xml_text = Blockly.Xml.domToText(xmlcontent);
+        xml_text = xml_text.replace(/</g, "&lt;");
+        document.getElementById("xml_out").innerHTML = xml_text;
+        console.log(xml_text);
+    }
+}
+
+function download() {
+    var xmlcontent = Blockly.Xml.workspaceToDom(Code.workspace);
+    var xml_text = xmlcontent; //Blockly.Xml.domToText(xmlcontent);
     if (xml_text == "<xml xmlns=\"https://developers.google.com/blockly/xml\"></xml>") {
         window.alert("无内容！");
         return;
@@ -62,6 +60,6 @@ function load() {
         window.alert("不是xml或xml有误！");
     } else {
         var xml = Blockly.Xml.textToDom(xml_text);
-        Blockly.Xml.domToWorkspace(xml, workspace);
+        Blockly.Xml.domToWorkspace(xml, Code.workspace);
     }
 };
