@@ -7,7 +7,7 @@ function myUpdateFunction(event) {
         var languageDropdown = document.getElementById('languageDropdown');
         var languageSelection = languageDropdown.options[languageDropdown.selectedIndex].value;
         var codeDiv = document.getElementById('codeDiv');
-        var codeHolder = document.createElement('pre');
+        var codeHolder = document.createElement('textarea');
         codeHolder.className = 'prettyprint but-not-that-pretty';
         codeHolder.id = 'xml_out';
         var code = document.createTextNode(Blockly[languageSelection].workspaceToCode(Code.workspace));
@@ -17,19 +17,21 @@ function myUpdateFunction(event) {
     } else {}
 }
 
-setInterval(myUpdateFunction, 1000);
+setInterval(myUpdateFunction, 2000);
 
 function showXml() {
     if (showCode == 'xml') {
         showCode = 'code';
         myUpdateFunction;
+        document.getElementById("showbtn").innerHTML = "JS";
     } else {
         showCode = 'xml';
         var xmlcontent = Blockly.Xml.workspaceToDom(Code.workspace);
-        var xml_text = Blockly.Xml.domToText(xmlcontent);
+        var xml_text = Blockly.Xml.domToPrettyText(xmlcontent);
         xml_text = xml_text.replace(/</g, "&lt;");
+
         document.getElementById("xml_out").innerHTML = xml_text;
-        console.log(xml_text);
+        document.getElementById("showbtn").innerHTML = "Xml";
     }
 }
 
@@ -65,3 +67,5 @@ function load() {
         Blockly.Xml.domToWorkspace(xml, Code.workspace);
     }
 };
+
+new ClipboardJS('.copybtn');

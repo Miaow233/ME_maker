@@ -18,6 +18,7 @@
     <script src="msg/zh-hans.js"></script>
     <script src="storage.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/gh/zenorocha/clipboard.js@2.0.6/dist/clipboard.min.js"></script>
     <script src="js/acorn_interpreter.js"></script>
     <script src="js/prettify-bundle.js"></script>
     <link href="styles/blockly_panel.css" rel="stylesheet">
@@ -36,7 +37,8 @@
           </div>
           <button onclick="download()">下载</button>
           <button onclick="load()">导入</button>
-          <button onclick="showXml()">xml</button>
+          <button onclick="showXml()" id="showbtn">xml</button>
+          <button class="copybtn" data-clipboard-target="#xml_out">copy</button>
         </div>
         <hr class="POps">
         <pre translate="no" dir="ltr"></pre>
