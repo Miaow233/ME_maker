@@ -24,6 +24,17 @@ Blockly.Blocks['bianliang'] = {
     }
 };
 
+Blockly.Blocks['send'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("发送");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(230);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
 
 Blockly.Blocks['sendmsg'] = {
     init: function () {
@@ -38,6 +49,7 @@ Blockly.Blocks['sendmsg'] = {
     }
 
 };
+
 Blockly.Blocks['addtext'] = {
     init: function () {
         this.appendValueInput("text")
@@ -50,6 +62,34 @@ Blockly.Blocks['addtext'] = {
         this.setHelpUrl("");
     }
 };
+
+Blockly.Blocks['addimg'] = {
+    init: function () {
+        this.appendValueInput("NAME")
+            .setCheck(null)
+            .appendField("添加图片");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(290);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['addat'] = {
+    init: function() {
+      this.appendDummyInput()
+          .appendField("添加艾特")
+          .appendField(new Blockly.FieldTextInput("$uin"), "uin")
+          .appendField(new Blockly.FieldTextInput("$nick"), "nick");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(290);
+   this.setTooltip("");
+   this.setHelpUrl("");
+    }
+  };
+
 
 Blockly.Blocks['readfile'] = {
     init: function () {
@@ -72,6 +112,7 @@ Blockly.Blocks['readfile'] = {
         this.setHelpUrl("");
     }
 };
+
 Blockly.Blocks['writefile'] = {
     init: function () {
         this.appendDummyInput()
@@ -95,6 +136,7 @@ Blockly.Blocks['writefile'] = {
         this.setHelpUrl("");
     }
 };
+
 Blockly.Blocks['replaceall'] = {
     init: function () {
         this.appendDummyInput()
@@ -116,6 +158,7 @@ Blockly.Blocks['replaceall'] = {
         this.setHelpUrl("");
     }
 };
+
 Blockly.Blocks['access'] = {
     init: function () {
         this.appendDummyInput()
@@ -125,6 +168,21 @@ Blockly.Blocks['access'] = {
             .setAlign(Blockly.ALIGN_RIGHT)
             .appendField("链接");
         this.setOutput(true, null);
+        this.setColour(230);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['setcontinue'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField(new Blockly.FieldDropdown([
+                ["继续", "$enableNext()"],
+                ["不继续", "$disableNext()"]
+            ]), "NAME");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
         this.setColour(230);
         this.setTooltip("");
         this.setHelpUrl("");

@@ -8,18 +8,41 @@ Blockly.JavaScript['bianliang'] = function (block) {
     return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
+Blockly.JavaScript['send'] = function (block) {
+    // TODO: Assemble JavaScript into code variable.
+    var code = '$send();\n';
+    return code;
+};
+
 Blockly.JavaScript['sendmsg'] = function (block) {
     var value_msg = Blockly.JavaScript.valueToCode(block, 'msg', Blockly.JavaScript.ORDER_ATOMIC);
     // TODO: Assemble JavaScript into code variable.
     var code = '$sendMessage(' + value_msg + ');\n';
     return code;
 };
+
 Blockly.JavaScript['addtext'] = function (block) {
     var value_text = Blockly.JavaScript.valueToCode(block, 'text', Blockly.JavaScript.ORDER_ATOMIC);
     // TODO: Assemble JavaScript into code variable.
     var code = '$addText(' + value_text + ');\n';
     return code;
 };
+
+Blockly.JavaScript['addimg'] = function (block) {
+    var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+    // TODO: Assemble JavaScript into code variable.
+    var code = '$addImage(' + value_name + ');\n';
+    return code;
+};
+
+Blockly.JavaScript['addat'] = function (block) {
+    var text__uin = block.getFieldValue('uin');
+    var text__nick = block.getFieldValue('nick');
+    // TODO: Assemble JavaScript into code variable.
+    var code = '$addAt(' + text__uin + ',' + text__nick + ');\n';
+    return code;
+};
+
 Blockly.JavaScript['readfile'] = function (block) {
     var value_path = Blockly.JavaScript.valueToCode(block, 'path', Blockly.JavaScript.ORDER_ATOMIC);
     var value_key = Blockly.JavaScript.valueToCode(block, 'key', Blockly.JavaScript.ORDER_ATOMIC);
@@ -29,6 +52,7 @@ Blockly.JavaScript['readfile'] = function (block) {
     // TODO: Change ORDER_NONE to the correct strength.
     return [code, Blockly.JavaScript.ORDER_NONE];
 };
+
 Blockly.JavaScript['writefile'] = function (block) {
     var value_path = Blockly.JavaScript.valueToCode(block, 'path', Blockly.JavaScript.ORDER_ATOMIC);
     var value_key = Blockly.JavaScript.valueToCode(block, 'key', Blockly.JavaScript.ORDER_ATOMIC);
@@ -37,6 +61,7 @@ Blockly.JavaScript['writefile'] = function (block) {
     var code = '$setProperty(' + value_path + ',' + value_key + ',' + value_val + ');\n';
     return code;
 };
+
 Blockly.JavaScript['replaceall'] = function (block) {
     var value_content = Blockly.JavaScript.valueToCode(block, 'content', Blockly.JavaScript.ORDER_ATOMIC);
     var value_src = Blockly.JavaScript.valueToCode(block, 'src', Blockly.JavaScript.ORDER_ATOMIC);
@@ -46,10 +71,18 @@ Blockly.JavaScript['replaceall'] = function (block) {
     // TODO: Change ORDER_NONE to the correct strength.
     return [code, Blockly.JavaScript.ORDER_NONE];
 };
+
 Blockly.JavaScript['access'] = function (block) {
     var value_url = Blockly.JavaScript.valueToCode(block, 'url', Blockly.JavaScript.ORDER_ATOMIC);
     // TODO: Assemble JavaScript into code variable.
     var code = '$access(' + value_url + ')';
     // TODO: Change ORDER_NONE to the correct strength.
     return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+Blockly.JavaScript['setcontinue'] = function (block) {
+    var dropdown_name = block.getFieldValue('NAME');
+    // TODO: Assemble JavaScript into code variable.
+    var code = dropdown_name + ';\n';
+    return code;
 };
