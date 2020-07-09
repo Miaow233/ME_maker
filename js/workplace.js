@@ -37,12 +37,16 @@ function showXml() {
 
 function download() {
     var xmlcontent = Blockly.Xml.workspaceToDom(Code.workspace);
-    var xml_text = xmlcontent; //Blockly.Xml.domToText(xmlcontent);
+    var xml_text = Blockly.Xml.domToPrettyText(xmlcontent); //Blockly.Xml.domToText(xmlcontent);
     if (xml_text == "<xml xmlns=\"https://developers.google.com/blockly/xml\"></xml>") {
         window.alert("无内容！");
         return;
     }
-    var randomfilename = "hdic" //Math.random().toString(36).substr(2);
+    var randomfilename = window.prompt('文件名');
+    if (!randomfilename.length) {
+        var randomfilename = "hdic" //Math.random().toString(36).substr(2);
+    }
+
     createAndDownloadFile(randomfilename + ".xml", xml_text);
 }
 
