@@ -61,7 +61,7 @@ function createAndDownloadFile(fileName, content) {
 
 
 function load() {
-    var xml_text = window.prompt('输入xml');
+    var xml_text = window.prompt('输入xml内容');
     if (xml_text == null || xml_text == '') {
         window.alert("已取消！");
     } else if (xml_text.slice(0, 55) != '<xml xmlns="https://developers.google.com/blockly/xml">' || xml_text.slice(xml_text.length - 6, xml_text.length) != '</xml>') {
