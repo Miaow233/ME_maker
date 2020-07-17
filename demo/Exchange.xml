@@ -1,0 +1,413 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="M2%idh.tq9TxOdPV7NL]">From</variable>
+    <variable id="G#kH_dpzHi3X^yVh4GXW">To</variable>
+    <variable id="3u6%[5@`569:[H8I?W1R">num</variable>
+    <variable id="!?9GMDik6P8ATz$G~?zI">netdata</variable>
+    <variable id="P#9*,B(rgj2#Ca1$E|[z">rates</variable>
+    <variable id="d?oAnY;f1WDi~A,7j_kx">FromRate</variable>
+    <variable id="m;DbyjIB4?CE@VP^7Oy=">ToRate</variable>
+    <variable id="ffg~L*]~@%pHd-surJSW">Rate</variable>
+    <variable id="ALUMWAU4^TcGyIGX*)*[">i</variable>
+  </variables>
+  <block type="controls_if" id="cT+oHQ8Ti1p2m5KuKn^3" x="13" y="13">
+    <value name="IF0">
+      <block type="logic_compare" id="6}53R+!?G.adLLhKxozw">
+        <field name="OP">EQ</field>
+        <value name="A">
+          <block type="text_getSubstring" id="E+*pz98^JVjI6J={ju=4">
+            <mutation at1="false" at2="true"></mutation>
+            <field name="WHERE1">FIRST</field>
+            <field name="WHERE2">FROM_START</field>
+            <value name="STRING">
+              <block type="bianliang" id="E7eY7DVOEV,Tv,fHtB6U">
+                <field name="NAME">$arg(0)</field>
+              </block>
+            </value>
+            <value name="AT2">
+              <block type="math_number" id="tM;WQ+B8+1O1[_.;5bB~">
+                <field name="NUM">9</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <value name="B">
+          <block type="text" id="yd)rei7![k*yUujgX=3y">
+            <field name="TEXT">/exchange</field>
+          </block>
+        </value>
+      </block>
+    </value>
+    <statement name="DO0">
+      <block type="controls_if" id="lGx!?jFaAGsy`s$gqI+Q">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="logic_compare" id=".0w|lPtZ52KG^-rfon}C">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="text_isEmpty" id="~~rL3A`EeC[P5ea)8Sx|">
+                <value name="VALUE">
+                  <shadow type="text" id="Ql1RY,^hEF;(]_V#Hiw^">
+                    <field name="TEXT"></field>
+                  </shadow>
+                  <block type="text_getSubstring" id="xNf}+U)M`up#=U44X[mP">
+                    <mutation at1="true" at2="false"></mutation>
+                    <field name="WHERE1">FROM_START</field>
+                    <field name="WHERE2">LAST</field>
+                    <value name="STRING">
+                      <block type="bianliang" id="1f8U3r;pQe5BZ*!;;?}s">
+                        <field name="NAME">$arg(0)</field>
+                      </block>
+                    </value>
+                    <value name="AT1">
+                      <block type="math_number" id="I*LV]o98WJvt/SfLEO{7">
+                        <field name="NUM">11</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="logic_boolean" id="{]CssJ;e|y}U[zAV*)y5">
+                <field name="BOOL">TRUE</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="sendmsg" id="vs:,c^X,(0bHvI)@)aP^">
+            <value name="msg">
+              <shadow type="text" id="YtORRS*]4,N:~n[r2b(r">
+                <field name="TEXT"></field>
+              </shadow>
+              <block type="text_join" id="4ba310%jVEnJn.rK.djI">
+                <mutation items="4"></mutation>
+                <value name="ADD0">
+                  <block type="text" id="IuEROOo1)U4={=89$.!Z">
+                    <field name="TEXT">该指令可用于查询汇率。\n使用方式举例:</field>
+                  </block>
+                </value>
+                <value name="ADD1">
+                  <block type="text" id="x%!Cmg75%|yw(~2NB`dE">
+                    <field name="TEXT">/exchange[USD-CNY]1  - 1 USD 等于多少 CNY\n</field>
+                  </block>
+                </value>
+                <value name="ADD2">
+                  <block type="text" id="fMjc}z`_wu9`y#wfA=E7">
+                    <field name="TEXT">支持币种: USD, EUR, CNY, JPY, HKD, CAD, GBP, AUD, SGD, MYR, RUB, NZD, THB, HUF, PHP, IDR, INR, BRL, RON, HRK, CZK, ISK, DKK, SEK, CHF, BGN, TRY, NOK, ZAR, MXN, ILS, KRW, PLN\n</field>
+                  </block>
+                </value>
+                <value name="ADD3">
+                  <block type="text" id="{7GZ6%[,ZZTQioZ*7)z-">
+                    <field name="TEXT">数据来自于欧洲中央银行 (https://www.ecb.europa.eu/)</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="variables_set" id="k3@VRu-b8M(p}QbKk(US">
+            <field name="VAR" id="M2%idh.tq9TxOdPV7NL]">From</field>
+            <value name="VALUE">
+              <block type="text_getSubstring" id="YvjkzP,uchkQRDzJD/5m">
+                <mutation at1="true" at2="true"></mutation>
+                <field name="WHERE1">FROM_START</field>
+                <field name="WHERE2">FROM_START</field>
+                <value name="STRING">
+                  <block type="bianliang" id="{+d,!0u^AUdAUir=J:AL">
+                    <field name="NAME">$arg(0)</field>
+                  </block>
+                </value>
+                <value name="AT1">
+                  <block type="math_number" id="#60Ng8C(DgEh^qo6IX:i">
+                    <field name="NUM">11</field>
+                  </block>
+                </value>
+                <value name="AT2">
+                  <block type="math_number" id="/gllM,Evbh_Tl@=dnG*K">
+                    <field name="NUM">13</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="d_NyTqPX`i~9PD*HO.lH">
+                <field name="VAR" id="G#kH_dpzHi3X^yVh4GXW">To</field>
+                <value name="VALUE">
+                  <block type="text_getSubstring" id="YY3??pfa6u}QlbP#E`BN">
+                    <mutation at1="true" at2="true"></mutation>
+                    <field name="WHERE1">FROM_START</field>
+                    <field name="WHERE2">FROM_START</field>
+                    <value name="STRING">
+                      <block type="bianliang" id="!#ElE@0R1WFxl8m=h{o5">
+                        <field name="NAME">$arg(0)</field>
+                      </block>
+                    </value>
+                    <value name="AT1">
+                      <block type="math_number" id="e8^/qLeFp5PK$v}qG*[4">
+                        <field name="NUM">15</field>
+                      </block>
+                    </value>
+                    <value name="AT2">
+                      <block type="math_number" id="w.fFf=8Ba3Y[Zzy!sw?S">
+                        <field name="NUM">17</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="gZ[y/V7fyyhL}+3T0yq$">
+                    <field name="VAR" id="3u6%[5@`569:[H8I?W1R">num</field>
+                    <value name="VALUE">
+                      <block type="text_getSubstring" id="7+bPdP1#|Ox$O{~,Vkp0">
+                        <mutation at1="true" at2="false"></mutation>
+                        <field name="WHERE1">FROM_START</field>
+                        <field name="WHERE2">LAST</field>
+                        <value name="STRING">
+                          <block type="bianliang" id="26GTk8LC~~67GtgaY1Rz">
+                            <field name="NAME">$arg(0)</field>
+                          </block>
+                        </value>
+                        <value name="AT1">
+                          <block type="math_number" id="5*l$vjKP=X-UsM1.?Xq2">
+                            <field name="NUM">19</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="t/A32_W;{Pgkv3RKgw|7">
+                        <field name="VAR" id="!?9GMDik6P8ATz$G~?zI">netdata</field>
+                        <value name="VALUE">
+                          <block type="access" id=":cW+(v;:aQCiTC+Kj4F3">
+                            <value name="url">
+                              <block type="text" id="Sf*nX?_2G]JRPNljGfMw">
+                                <field name="TEXT">https://api.exchangeratesapi.io/latest</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="variables_set" id="pqu$oy]q?[d.]W~{!UI2">
+                            <field name="VAR" id="P#9*,B(rgj2#Ca1$E|[z">rates</field>
+                            <value name="VALUE">
+                              <block type="json_getKey" id="*Q|A^86[!NsB:[0d:PD(">
+                                <value name="VAR">
+                                  <block type="json_parse" id="1CCBqA;DHLuQF5Rg|,_!">
+                                    <value name="content">
+                                      <block type="variables_get" id="MZ3e;C]}xg?dC.o/rGv3">
+                                        <field name="VAR" id="!?9GMDik6P8ATz$G~?zI">netdata</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="propertyName">
+                                  <shadow type="text" id="H8SX|Je^N~Je`GcZuPLp">
+                                    <field name="TEXT">rates</field>
+                                  </shadow>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="variables_set" id="stnv077boW@2+Uj3lFTM">
+                                <field name="VAR" id="d?oAnY;f1WDi~A,7j_kx">FromRate</field>
+                                <value name="VALUE">
+                                  <block type="json_getKey" id="VO/hZ)l~Xu%cll^_b7gg">
+                                    <value name="VAR">
+                                      <block type="variables_get" id="h0w;OfHl8,]8~@f$0][o">
+                                        <field name="VAR" id="P#9*,B(rgj2#Ca1$E|[z">rates</field>
+                                      </block>
+                                    </value>
+                                    <value name="propertyName">
+                                      <shadow type="text" id="k,Z}Sv8Q#g3g2.8=@OrR">
+                                        <field name="TEXT"></field>
+                                      </shadow>
+                                      <block type="variables_get" id="J(?{vi=+FPZxenCo+fN~">
+                                        <field name="VAR" id="M2%idh.tq9TxOdPV7NL]">From</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="variables_set" id="}a{JJx-.L5`cRyDZtqK~">
+                                    <field name="VAR" id="m;DbyjIB4?CE@VP^7Oy=">ToRate</field>
+                                    <value name="VALUE">
+                                      <block type="json_getKey" id=")?Z,`-x]7Km1FKX/b5im">
+                                        <value name="VAR">
+                                          <block type="variables_get" id="!W`AdGP:l;V{.B-S85kS">
+                                            <field name="VAR" id="P#9*,B(rgj2#Ca1$E|[z">rates</field>
+                                          </block>
+                                        </value>
+                                        <value name="propertyName">
+                                          <shadow type="text" id="MS6GUtGc/]fSNeS-.jYJ">
+                                            <field name="TEXT"></field>
+                                          </shadow>
+                                          <block type="variables_get" id="HJYdF][[IDVxb|m:^=+6">
+                                            <field name="VAR" id="G#kH_dpzHi3X^yVh4GXW">To</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="variables_set" id="TCjv9*tSD-6GaAbez/}1">
+                                        <field name="VAR" id="ffg~L*]~@%pHd-surJSW">Rate</field>
+                                        <value name="VALUE">
+                                          <block type="math_arithmetic" id="1_$XaGwvT))-KE?)d@fl">
+                                            <field name="OP">DIVIDE</field>
+                                            <value name="A">
+                                              <shadow type="math_number" id="afbI53rx[%8]3?+!espo">
+                                                <field name="NUM">1</field>
+                                              </shadow>
+                                              <block type="variables_get" id="(4HvCvhc0evscd_?$~Z;">
+                                                <field name="VAR" id="m;DbyjIB4?CE@VP^7Oy=">ToRate</field>
+                                              </block>
+                                            </value>
+                                            <value name="B">
+                                              <shadow type="math_number" id=";toX~6[{zt~t7C(m:_o=">
+                                                <field name="NUM">1</field>
+                                              </shadow>
+                                              <block type="variables_get" id="ehfj*-/*TlT|-K=(zj;2">
+                                                <field name="VAR" id="d?oAnY;f1WDi~A,7j_kx">FromRate</field>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <next>
+                                          <block type="variables_set" id="KScw,#2:|4BGEX-^Ef.)">
+                                            <field name="VAR" id="ALUMWAU4^TcGyIGX*)*[">i</field>
+                                            <value name="VALUE">
+                                              <block type="math_arithmetic" id=";,Kc8^rh(Zi!.OcDwHyB">
+                                                <field name="OP">DIVIDE</field>
+                                                <value name="A">
+                                                  <shadow type="math_number" id="rk6_/V-.}zN7_C#*sT;q">
+                                                    <field name="NUM">1</field>
+                                                  </shadow>
+                                                  <block type="math_round" id="%zHtD`5vAh50}sz#/`E:">
+                                                    <field name="OP">ROUND</field>
+                                                    <value name="NUM">
+                                                      <shadow type="math_number" id="=7EBM5Lkr|@Szb{a*[pj">
+                                                        <field name="NUM">3.1</field>
+                                                      </shadow>
+                                                      <block type="math_arithmetic" id="kRm5;?DF+]e.2G)p07Au">
+                                                        <field name="OP">MULTIPLY</field>
+                                                        <value name="A">
+                                                          <shadow type="math_number" id="uKaK8vXAT%{283WC:b.Q">
+                                                            <field name="NUM">1</field>
+                                                          </shadow>
+                                                          <block type="math_arithmetic" id="ce4_=DDzZerA~7Bj6;ZQ">
+                                                            <field name="OP">MULTIPLY</field>
+                                                            <value name="A">
+                                                              <shadow type="math_number" id="#R2UJ38)HUc;6.KW-R31">
+                                                                <field name="NUM">1</field>
+                                                              </shadow>
+                                                              <block type="variables_get" id="JBO3n^$,os{~j?bOKli)">
+                                                                <field name="VAR" id="3u6%[5@`569:[H8I?W1R">num</field>
+                                                              </block>
+                                                            </value>
+                                                            <value name="B">
+                                                              <shadow type="math_number" id="HPq-aI@F7/Nq:;r!/fwt">
+                                                                <field name="NUM">1</field>
+                                                              </shadow>
+                                                              <block type="variables_get" id="ST|914L7FIkS#)OBZEV;">
+                                                                <field name="VAR" id="ffg~L*]~@%pHd-surJSW">Rate</field>
+                                                              </block>
+                                                            </value>
+                                                          </block>
+                                                        </value>
+                                                        <value name="B">
+                                                          <shadow type="math_number" id="N//b5hlr5f$6I*h,xC!f">
+                                                            <field name="NUM">1000</field>
+                                                          </shadow>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                                <value name="B">
+                                                  <shadow type="math_number" id="7m0.4R!U![~^kw%CjrmI">
+                                                    <field name="NUM">1000</field>
+                                                  </shadow>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="sendmsg" id="G`^[b%sY:f@n-S)ndyGG">
+                                                <value name="msg">
+                                                  <shadow type="text" id="f^z8RG/a1#zr.=PHl_~;">
+                                                    <field name="TEXT"></field>
+                                                  </shadow>
+                                                  <block type="text_join" id="kqHUVm6_5]QnNQJf|W4X">
+                                                    <mutation items="9"></mutation>
+                                                    <value name="ADD0">
+                                                      <block type="variables_get" id="M[.jScbmy9IRlc?n`}rc">
+                                                        <field name="VAR" id="3u6%[5@`569:[H8I?W1R">num</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="ADD1">
+                                                      <block type="text" id="H!Tm$ava7Le_bO{O*6-n">
+                                                        <field name="TEXT"> </field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="ADD2">
+                                                      <block type="variables_get" id="BDWvC8^u|Yf(;(rZkyty">
+                                                        <field name="VAR" id="M2%idh.tq9TxOdPV7NL]">From</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="ADD3">
+                                                      <block type="text" id="|tq8u=xOPbT3xWU7{#U;">
+                                                        <field name="TEXT"> = </field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="ADD4">
+                                                      <block type="variables_get" id="#XW5N}%OfB-Hl{/b4-Y$">
+                                                        <field name="VAR" id="ALUMWAU4^TcGyIGX*)*[">i</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="ADD5">
+                                                      <block type="text" id="OW`bT5SH_7unP4H=_5Fr">
+                                                        <field name="TEXT"> </field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="ADD6">
+                                                      <block type="variables_get" id="~vM%+@`BDx;h+{yaQ]Ec">
+                                                        <field name="VAR" id="G#kH_dpzHi3X^yVh4GXW">To</field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="ADD7">
+                                                      <block type="text" id="FjnhJ4y;!l2xfvBefJ,#">
+                                                        <field name="TEXT">\nRate: </field>
+                                                      </block>
+                                                    </value>
+                                                    <value name="ADD8">
+                                                      <block type="variables_get" id="KIgS,6;6M@Ur)~V1LvW#">
+                                                        <field name="VAR" id="ffg~L*]~@%pHd-surJSW">Rate</field>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </value>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </next>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

@@ -1,0 +1,510 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="M2%idh.tq9TxOdPV7NL]">yuming</variable>
+    <variable id="w4.C+.USc#WlJ,?~D!B7">data</variable>
+  </variables>
+  <block type="controls_if" id="Sq*S=`OO8e63{1eJtUMT" x="13" y="438">
+    <value name="IF0">
+      <block type="logic_compare" id="w5Z9.0-nL_$st5X9[/iU">
+        <field name="OP">EQ</field>
+        <value name="A">
+          <block type="text_getSubstring" id="Be$Y|*=JM=vo~hCm.+H?">
+            <mutation at1="false" at2="true"></mutation>
+            <field name="WHERE1">FIRST</field>
+            <field name="WHERE2">FROM_START</field>
+            <value name="STRING">
+              <block type="bianliang" id="ag*P,}5(A$zwfRXS?TBg">
+                <field name="NAME">$arg(0)</field>
+              </block>
+            </value>
+            <value name="AT2">
+              <block type="math_number" id="1lq97Cxvs{9*:|*5b79r">
+                <field name="NUM">5</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <value name="B">
+          <block type="text" id="|fIsN${w.$sIF,Je*S$X">
+            <field name="TEXT">/ping</field>
+          </block>
+        </value>
+      </block>
+    </value>
+    <statement name="DO0">
+      <block type="controls_if" id="xNSAvzY}qwR/z6n_34xf">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="logic_compare" id="RKBeSo9FI^.+F3g-ta?P">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="text_isEmpty" id="hUIl19J?IyE/HdcS07/E">
+                <value name="VALUE">
+                  <shadow type="text" id="4tzz4sqWZJ{JmY[+@yRE">
+                    <field name="TEXT"></field>
+                  </shadow>
+                  <block type="text_getSubstring" id="4.X[Q2d9lF~_oQGhD3@?">
+                    <mutation at1="true" at2="false"></mutation>
+                    <field name="WHERE1">FROM_START</field>
+                    <field name="WHERE2">LAST</field>
+                    <value name="STRING">
+                      <block type="bianliang" id="r4wX8ZLP1;*yK$qZ/{RY">
+                        <field name="NAME">$arg(0)</field>
+                      </block>
+                    </value>
+                    <value name="AT1">
+                      <block type="math_number" id="{UjB,m(m3;CFC4DMe#q3">
+                        <field name="NUM">7</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="logic_boolean" id=";8K47;/RGnw-GATewlCP">
+                <field name="BOOL">TRUE</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="sendmsg" id="Nvu;$gN.E7(Wqn58Vz,R">
+            <value name="msg">
+              <shadow type="text" id="kbXxbX@Y]xRRw^gRQM/N">
+                <field name="TEXT"></field>
+              </shadow>
+              <block type="text" id="7oyS:G}N~BR`^xp2dL(S">
+                <field name="TEXT">PING功能列表：(回复命令即可)\r/ping 域名</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="variables_set" id=":W@A](0Sy)mL!RrrYOrv">
+            <field name="VAR" id="M2%idh.tq9TxOdPV7NL]">yuming</field>
+            <value name="VALUE">
+              <block type="text_getSubstring" id="I.Cv![t}Yw6GPZ%23;^A">
+                <mutation at1="true" at2="false"></mutation>
+                <field name="WHERE1">FROM_START</field>
+                <field name="WHERE2">LAST</field>
+                <value name="STRING">
+                  <block type="bianliang" id="UW1=OJJnW-)S|uT]_4?Q">
+                    <field name="NAME">$arg(0)</field>
+                  </block>
+                </value>
+                <value name="AT1">
+                  <block type="math_number" id="xEWmqiUl!CEA=Q1r((7,">
+                    <field name="NUM">7</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="8?|KOTzSBVe@38Tuw?Q2">
+                <field name="VAR" id="w4.C+.USc#WlJ,?~D!B7">data</field>
+                <value name="VALUE">
+                  <block type="access" id="fVQK@PMWL^Mb18TQ/Q;A">
+                    <value name="url">
+                      <block type="text_join" id="+f^(_Pl4gxH%uQ~h7qzJ">
+                        <mutation items="2"></mutation>
+                        <value name="ADD0">
+                          <block type="text" id="DUUPF.u96]_aMqc}$]Z*">
+                            <field name="TEXT">https://api.169740.com/api/web.ping?host=</field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="variables_get" id="/`EE]=bKw}{!+22ID18*">
+                            <field name="VAR" id="M2%idh.tq9TxOdPV7NL]">yuming</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_if" id="@ShN6Wu#gA?G:!OSPJ@Y">
+                    <mutation else="1"></mutation>
+                    <value name="IF0">
+                      <block type="logic_compare" id="NO9ME7Upr)#X}!Ejs9V1">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="text_isEmpty" id="Lk!yRW_ID}]u|#t(FQ{T">
+                            <value name="VALUE">
+                              <shadow type="text" id="l3{OOPFtyyh,}G]0azM_">
+                                <field name="TEXT"></field>
+                              </shadow>
+                              <block type="variables_get" id=")NB9(X,c}Jjz^jQGi:c.">
+                                <field name="VAR" id="w4.C+.USc#WlJ,?~D!B7">data</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="logic_boolean" id="$}A|i%}_T!Bz,TN#.QZM">
+                            <field name="BOOL">FALSE</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set" id="G9_OE%PA,j#V#3=Q`Hhv">
+                        <field name="VAR" id="w4.C+.USc#WlJ,?~D!B7">data</field>
+                        <value name="VALUE">
+                          <block type="json_parse" id="I75rXQKv.J(-Z2aX{-S=">
+                            <value name="content">
+                              <block type="variables_get" id="-%me4+]2F*}3T{9*m[{7">
+                                <field name="VAR" id="w4.C+.USc#WlJ,?~D!B7">data</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="controls_if" id="WE8skO/Lh4W!8JGawFQA">
+                            <mutation elseif="1"></mutation>
+                            <value name="IF0">
+                              <block type="logic_compare" id="UZllu5kB^z8HfB/hIlb7">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                  <block type="json_getKey" id="Tl=_dJRQiQV(|QLSh:lH">
+                                    <value name="VAR">
+                                      <block type="variables_get" id="t1hmkist7!bTX-CT7:hZ">
+                                        <field name="VAR" id="w4.C+.USc#WlJ,?~D!B7">data</field>
+                                      </block>
+                                    </value>
+                                    <value name="propertyName">
+                                      <shadow type="text" id="14F)+*fOHJ2ru=jm{d]g">
+                                        <field name="TEXT">code</field>
+                                      </shadow>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="wCs*i0:ck(mf~H$/[{@#">
+                                    <field name="NUM">1</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO0">
+                              <block type="sendmsg" id="8g]OoLgp;mzTvcdo~W;4">
+                                <value name="msg">
+                                  <shadow type="text" id="P2MTPuro%.NyQtSM=Lf[">
+                                    <field name="TEXT"></field>
+                                  </shadow>
+                                  <block type="text_join" id="VbMt/`r}a1JX@=Z+m.os">
+                                    <mutation items="8"></mutation>
+                                    <value name="ADD0">
+                                      <block type="text_join" id="67^y%2RUit@[/(Z7r/S5">
+                                        <mutation items="3"></mutation>
+                                        <value name="ADD0">
+                                          <block type="text" id=",ouo[1A$*1HlT)`6$x4L">
+                                            <field name="TEXT">查询：</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD1">
+                                          <block type="json_getKey" id="WH9up^w(,8c[rX4*R9YD">
+                                            <value name="VAR">
+                                              <block type="variables_get" id="I]wr6*`#v_5lAvQQA59)">
+                                                <field name="VAR" id="w4.C+.USc#WlJ,?~D!B7">data</field>
+                                              </block>
+                                            </value>
+                                            <value name="propertyName">
+                                              <shadow type="text" id="VHM7wLARAh^qNUgT#w*u">
+                                                <field name="TEXT">host</field>
+                                              </shadow>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="ADD2">
+                                          <block type="text" id="(d?wMei~EALW:1WYok}l">
+                                            <field name="TEXT">\r</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="ADD1">
+                                      <block type="text_join" id="y!;lE^TDWGop|4F8^-L]">
+                                        <mutation items="3"></mutation>
+                                        <value name="ADD0">
+                                          <block type="text" id=":W,!0YG`/ppnl#aQW_?v">
+                                            <field name="TEXT">解析IP：</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD1">
+                                          <block type="json_getKey" id="j|*!JM@s!T%n+4=/F)U-">
+                                            <value name="VAR">
+                                              <block type="variables_get" id="w]Dp5EC%`N=72IsNyUU6">
+                                                <field name="VAR" id="w4.C+.USc#WlJ,?~D!B7">data</field>
+                                              </block>
+                                            </value>
+                                            <value name="propertyName">
+                                              <shadow type="text" id="9zKeZi.2c%(;6E-:KBBK">
+                                                <field name="TEXT">ip</field>
+                                              </shadow>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="ADD2">
+                                          <block type="text" id="K[rf}EbU_ekL2u[d:e=V">
+                                            <field name="TEXT">\r</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="ADD2">
+                                      <block type="text_join" id="~4n]uW3T_n?l#pnpfGjV">
+                                        <mutation items="3"></mutation>
+                                        <value name="ADD0">
+                                          <block type="text" id="9%o.Vlq_}8h1!7WI|{H^">
+                                            <field name="TEXT">IP所在地：</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD1">
+                                          <block type="json_getKey" id=":kDWC]~{a]W[dkPZ3ij?">
+                                            <value name="VAR">
+                                              <block type="variables_get" id="Bj|eoxhPM_m$GH!;w*rU">
+                                                <field name="VAR" id="w4.C+.USc#WlJ,?~D!B7">data</field>
+                                              </block>
+                                            </value>
+                                            <value name="propertyName">
+                                              <shadow type="text" id="uhE$qU:Q|w{*a`T]J,xh">
+                                                <field name="TEXT">location</field>
+                                              </shadow>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="ADD2">
+                                          <block type="text" id="0JOqOrr/`FU+th_SPedI">
+                                            <field name="TEXT">\r</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="ADD3">
+                                      <block type="text_join" id="q.Z70%M$q=I?s0pF@qOV">
+                                        <mutation items="3"></mutation>
+                                        <value name="ADD0">
+                                          <block type="text" id="A6-;IZdG9-l_-[Jwq@;K">
+                                            <field name="TEXT">最小延迟：</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD1">
+                                          <block type="json_getKey" id="!1|`searl-_!}jf%@.lt">
+                                            <value name="VAR">
+                                              <block type="variables_get" id="DS|BCVM)mc0{`si[:[2[">
+                                                <field name="VAR" id="w4.C+.USc#WlJ,?~D!B7">data</field>
+                                              </block>
+                                            </value>
+                                            <value name="propertyName">
+                                              <shadow type="text" id="a2B9}1jgP%Dpu0|@K+yV">
+                                                <field name="TEXT">ping_time_min</field>
+                                              </shadow>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="ADD2">
+                                          <block type="text" id="$NKw.3.FC:jIZ(fezzJ=">
+                                            <field name="TEXT">\r</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="ADD4">
+                                      <block type="text_join" id="1Ib1h?]^qM2KG(wO4!*{">
+                                        <mutation items="3"></mutation>
+                                        <value name="ADD0">
+                                          <block type="text" id="plA7^.LYwZD.=ml+if(:">
+                                            <field name="TEXT">最大延迟：</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD1">
+                                          <block type="json_getKey" id="p*4ilxnop!UnuB_h5]:e">
+                                            <value name="VAR">
+                                              <block type="variables_get" id="P^}}qOV;s!r#pfO``bJ|">
+                                                <field name="VAR" id="w4.C+.USc#WlJ,?~D!B7">data</field>
+                                              </block>
+                                            </value>
+                                            <value name="propertyName">
+                                              <shadow type="text" id="d;CH/.`{J9N^3Jf5ixqn">
+                                                <field name="TEXT">ping_time_max</field>
+                                              </shadow>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="ADD2">
+                                          <block type="text" id="!,?vs}Bt4b95e+y_2vnO">
+                                            <field name="TEXT">\r</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="ADD5">
+                                      <block type="text_join" id="bsxwT_]58;-bLCarUD5?">
+                                        <mutation items="3"></mutation>
+                                        <value name="ADD0">
+                                          <block type="text" id="Dj`?v$qYr`-0[)M{)*:^">
+                                            <field name="TEXT">平均延迟：</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD1">
+                                          <block type="json_getKey" id=".T2#0b1|l,fo*(LzLzu0">
+                                            <value name="VAR">
+                                              <block type="variables_get" id="K+0zkTU=_G!COf@Y`kuw">
+                                                <field name="VAR" id="w4.C+.USc#WlJ,?~D!B7">data</field>
+                                              </block>
+                                            </value>
+                                            <value name="propertyName">
+                                              <shadow type="text" id="-lH7|/;9%[:+=0C{nF+`">
+                                                <field name="TEXT">ping_time_avg</field>
+                                              </shadow>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="ADD2">
+                                          <block type="text" id="Lm=Kbq,LgdbJynM.N^%S">
+                                            <field name="TEXT">\r</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="ADD6">
+                                      <block type="text_join" id="FOPILO~z52-uywzbH!_+">
+                                        <mutation items="3"></mutation>
+                                        <value name="ADD0">
+                                          <block type="text" id="ZT}FRd7868[67ThGHG9D">
+                                            <field name="TEXT">状态：</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD1">
+                                          <block type="json_getKey" id="SUW|.l7iEzgv:Xuy06(]">
+                                            <value name="VAR">
+                                              <block type="variables_get" id="mBlY$Cp#dK[psyUOw{+G">
+                                                <field name="VAR" id="w4.C+.USc#WlJ,?~D!B7">data</field>
+                                              </block>
+                                            </value>
+                                            <value name="propertyName">
+                                              <shadow type="text" id="28VCVaVR/8aiX`FP35$z">
+                                                <field name="TEXT">state</field>
+                                              </shadow>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="ADD2">
+                                          <block type="text" id="iL-@T29L@xf=*v[YJT:0">
+                                            <field name="TEXT">\r</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="ADD7">
+                                      <block type="text_join" id="22IF*@?dT0PD+o3Sw:2W">
+                                        <mutation items="3"></mutation>
+                                        <value name="ADD0">
+                                          <block type="text" id="b+y+KY8XlW`:]O[T$.z*">
+                                            <field name="TEXT">ping节点地区：</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD1">
+                                          <block type="json_getKey" id="yH^|Rpw=hpcc~IH(cKIo">
+                                            <value name="VAR">
+                                              <block type="variables_get" id="QTx7w{cRI*[g!{r-heZ-">
+                                                <field name="VAR" id="w4.C+.USc#WlJ,?~D!B7">data</field>
+                                              </block>
+                                            </value>
+                                            <value name="propertyName">
+                                              <shadow type="text" id="2z~z~fDLSe~=yHJtg8b1">
+                                                <field name="TEXT">node</field>
+                                              </shadow>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="ADD2">
+                                          <block type="text" id="V_9D0:T,?7c#jikwlPgt">
+                                            <field name="TEXT">\r</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                            <value name="IF1">
+                              <block type="logic_compare" id="n?LH14QB/M|o${gd3}lu">
+                                <field name="OP">NEQ</field>
+                                <value name="A">
+                                  <block type="json_getKey" id="7%CiR,fy/fIxR98pv@1w">
+                                    <value name="VAR">
+                                      <block type="variables_get" id="vh[ud;BoT6VA*A3Ws6#5">
+                                        <field name="VAR" id="w4.C+.USc#WlJ,?~D!B7">data</field>
+                                      </block>
+                                    </value>
+                                    <value name="propertyName">
+                                      <shadow type="text" id="axV?St/V_@rlyej!3e;~">
+                                        <field name="TEXT">code</field>
+                                      </shadow>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="8?rIn/[VW.*ESyw]gMwo">
+                                    <field name="NUM">1</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO1">
+                              <block type="sendmsg" id="Y!%*$Dpsbsvl7f_n%IMk">
+                                <value name="msg">
+                                  <shadow type="text" id="{GtkSsHN8Hu}7{`/:j`]">
+                                    <field name="TEXT"></field>
+                                  </shadow>
+                                  <block type="text_join" id="M;gx%=n@TZ+p}6EN-Y.h">
+                                    <mutation items="2"></mutation>
+                                    <value name="ADD0">
+                                      <block type="text" id="[HPPR+Ii#Ccx3l@J#wG(">
+                                        <field name="TEXT">错误：</field>
+                                      </block>
+                                    </value>
+                                    <value name="ADD1">
+                                      <block type="json_getKey" id="-%e%A9W*7hE:u9C[;[Pp">
+                                        <value name="VAR">
+                                          <block type="variables_get" id="uON%|CW)^8F1+Z%.BH_.">
+                                            <field name="VAR" id="w4.C+.USc#WlJ,?~D!B7">data</field>
+                                          </block>
+                                        </value>
+                                        <value name="propertyName">
+                                          <shadow type="text" id="@jR*S!1+2we]J`P9M40l">
+                                            <field name="TEXT">msg</field>
+                                          </shadow>
+                                        </value>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <statement name="ELSE">
+                      <block type="sendmsg" id="`3n^#2ec`Gk-g2e)0)y.">
+                        <value name="msg">
+                          <shadow type="text" id="+/r~Aw@](3OFh@}A?U.,">
+                            <field name="TEXT">获取失败，请重试</field>
+                          </shadow>
+                        </value>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>

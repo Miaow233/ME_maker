@@ -1,77 +1,96 @@
-<!doctype html>
-<html lang="en" dir="ltr">
+<!DOCTYPE html>
+<html>
 
 <head>
-  <title>Medic JS</title>
-  <meta name="robots" content="noindex">
   <meta charset="utf-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="iframe" content="standalone">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" value="notranslate">
+  <link rel="icon" href="favicon.ico">
+  <title></title>
+  <link rel="stylesheet" href="styles/style.css">
+  <script src="https://cdn.jsdelivr.net/gh/google/blockly/blockly_uncompressed.js"></script>
+  <script src="msg/zh-hans.js"></script>
+  <script src="msg/zh-hans2.js"></script>
+
+  <script src="blocks/medic.js"></script>
+  <script src="blocks/json.js"></script>
+  <script src="blocks/time.js"></script>
+  <script src="blocks/logic.js"></script>
+  <script src="blocks/loops.js"></script>
+  <script src="blocks/math.js"></script>
+  <script src="blocks/text.js"></script>
+  <script src="blocks/lists.js"></script>
+  <script src="blocks/variables.js"></script>
+  <script src="blocks/variables_dynamic.js"></script>
+  <script src="blocks/procedures.js"></script>
+
+  <script src="generators/javascript.js"></script>
+  <script src="generators/javascript/medic.js"></script>
+  <script src="generators/javascript/json.js"></script>
+  <script src="generators/javascript/time.js"></script>
+  <script src="generators/javascript/logic.js"></script>
+  <script src="generators/javascript/loops.js"></script>
+  <script src="generators/javascript/math.js"></script>
+  <script src="generators/javascript/text.js"></script>
+  <script src="generators/javascript/lists.js"></script>
+  <script src="generators/javascript/variables.js"></script>
+  <script src="generators/javascript/variables_dynamic.js"></script>
+  <script src="generators/javascript/procedures.js"></script>
+
+  <script src="script/storage.js"></script>
+  <script src="script/code.js"></script>
+  <script src="script/screenshot.js"></script>
 </head>
 
 <body>
-  <!DOCTYPE html>
-
-  <head>
-    <script src="blockly_uncompressed.js"></script>
-    <script src="msg/zh-hans.js"></script>
-    <script src="storage.js"></script>
-
-    <script src="js/acorn_interpreter.js"></script>
-    <script src="js/prettify-bundle.js"></script>
-    <link href="styles/blockly_panel.css" rel="stylesheet">
-  </head>
-
-  <body>
-    <div class="app-container">
-      <div id="blocklyDiv" class="main blockly-panel"></div>
-      <div id="codeDiv" class="main output-panel">
-        <div class="dropdown-bar">
-          Language:
-          <div id="im-just-an-underline">
-            <select id="languageDropdown" onChange="myUpdateFunction();">
-              <option value="JavaScript">JavaScript</option>
-            </select>
-          </div>
-          <button onclick="download()">下载</button>
-          <button onclick="load()">导入</button>
-          <button onclick="showXml()">xml</button>
-        </div>
-        <hr class="POps">
-        <pre translate="no" dir="ltr"></pre>
-      </div>
-      <!--<div id="playButton" class="play-button material-icons" translate="no">play_arrow</div>-->
-    </div>
-
-    <!--拼图导入-->
-    <script src="blocks/logic.js"></script>
-    <script src="blocks/loops.js"></script>
-    <script src="blocks/math.js"></script>
-    <script src="blocks/procedures.js"></script>
-    <script src="blocks/text.js"></script>
-    <script src="blocks/lists.js"></script>
-    <script src="blocks/variables.js"></script>
-    <script src="blocks/variables_dynamic.js"></script>
-    <script src="blocks/json.js"></script>
-    <script src="blocks/medic.js"></script>
-
-    <script src="generators/javascript.js"></script>
-    <script src="generators/logic.js"></script>
-    <script src="generators/loops.js"></script>
-    <script src="generators/math.js"></script>
-    <script src="generators/procedures.js"></script>
-    <script src="generators/text.js"></script>
-    <script src="generators/lists.js"></script>
-    <script src="generators/variables.js"></script>
-    <script src="generators/variables_dynamic.js"></script>
-    <script src="generators/json.js"></script>
-    <script src="generators/medic.js"></script>
-    <!--拼图导入-->
-    <script src="js/code.js"></script>
-    <script src="js/toolbox.js"></script>
-    <script src="js/workplace.js"></script>
-  </body>
+  <table width="100%" height="100%">
+    <tr>
+      <td>
+        <h1>
+          <span id="title">...</span>
+        </h1>
+      </td>
+      <td class="farSide">
+        <select id="languageMenu"></select>
+      </td>
+    </tr>
+    <tr>
+      <td colspan=2>
+        <table width="100%">
+          <tr id="tabRow" height="1em">
+            <td id="tab_blocks" class="tabon">...</td>
+            <td class="tabmin tab_collapse">&nbsp;</td>
+            <td id="tab_javascript" class="taboff tab_collapse">JavaScript</td>
+            <td class="tabmin tab_collapse">&nbsp;</td>
+            <td id="tab_xml" class="taboff tab_collapse">XML</td>
+            <td class="tabmin">&nbsp;</td>
+            <td id="tab_code" class="taboff">
+              <select id="code_menu"></select>
+            </td>
+            <td class="tabmax">
+              <button id="trashButton" class="notext" title="...">
+                <img src='https://cdn.jsdelivr.net/gh/google/blockly/media/1x1.gif' class="trash icon21">
+              </button>
+              <button id="linkButton" class="notext" title="...">
+                <img src='https://cdn.jsdelivr.net/gh/google/blockly/media/1x1.gif' class="link icon21">
+              </button>
+              <button id="runButton" class="notext" title="..." onclick="Blockly.downloadScreenshot(Code.workspace)">
+                <img src='https://cdn.jsdelivr.net/gh/google/blockly/media/1x1.gif' class="run icon21">
+              </button>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td height="99%" colspan=2 id="content_area">
+      </td>
+    </tr>
+  </table>
+  <div id="content_blocks" class="content"></div>
+  <pre id="content_javascript" class="content prettyprint lang-js"></pre>
+  <textarea id="content_xml" class="content" wrap="off"></textarea>
+  <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none"><category name="Medic" colour="#a55b80"><block type="sendmsg"><value name="msg"><shadow type="text"><field name="TEXT"></field></shadow></value></block><block type="addtext"><value name="text"><shadow type="text"><field name="TEXT"></field></shadow></value></block><block type="replaceall"><value name="content"><shadow type="text"><field name="TEXT"></field></shadow></value><value name="src"><shadow type="text"><field name="TEXT"></field></shadow></value><value name="dst"><shadow type="text"><field name="TEXT"></field></shadow></value></block><block type="access"><value name="url"><block type="text"><field name="TEXT">http://</field></block></value></block><block type="bianliang"><field name="NAME">$path</field></block><block type="send"></block><block type="addimg"></block><block type="addat"></block><block type="setcontinue"></block></category><sep></sep><category name="逻辑" colour="#5b80a5"><block type="controls_if"></block><block type="logic_compare"><field name="OP">EQ</field></block><block type="logic_operation"><field name="OP">AND</field></block><block type="logic_negate"></block><block type="logic_boolean"><field name="BOOL">TRUE</field></block><block type="logic_null"></block><block type="logic_ternary"></block></category><category name="循环" colour="#5ba55b"><block type="controls_repeat_ext"><value name="TIMES"><shadow type="math_number"><field name="NUM">10</field></shadow></value></block><block type="controls_whileUntil"><field name="MODE">WHILE</field></block><block type="controls_for"><field name="VAR" id="/ogdlsmC2BKC3#wZH}Ym">i</field><value name="FROM"><shadow type="math_number"><field name="NUM">1</field></shadow></value><value name="TO"><shadow type="math_number"><field name="NUM">10</field></shadow></value><value name="BY"><shadow type="math_number"><field name="NUM">1</field></shadow></value></block><block type="controls_forEach"><field name="VAR" id="/|L*?Eiy+=3+.~4w-lSu">j</field></block><block type="controls_flow_statements"><field name="FLOW">BREAK</field></block></category><category name="数学" colour="#5b67a5"><block type="math_number"><field name="NUM">0</field></block><block type="math_arithmetic"><field name="OP">ADD</field><value name="A"><shadow type="math_number"><field name="NUM">1</field></shadow></value><value name="B"><shadow type="math_number"><field name="NUM">1</field></shadow></value></block><block type="math_single"><field name="OP">ROOT</field><value name="NUM"><shadow type="math_number"><field name="NUM">9</field></shadow></value></block><block type="math_trig"><field name="OP">SIN</field><value name="NUM"><shadow type="math_number"><field name="NUM">45</field></shadow></value></block><block type="math_constant"><field name="CONSTANT">PI</field></block><block type="math_number_property"><mutation divisor_input="false"></mutation><field name="PROPERTY">EVEN</field><value name="NUMBER_TO_CHECK"><shadow type="math_number"><field name="NUM">0</field></shadow></value></block><block type="math_round"><field name="OP">ROUND</field><value name="NUM"><shadow type="math_number"><field name="NUM">3.1</field></shadow></value></block><block type="math_on_list"><mutation op="SUM"></mutation><field name="OP">SUM</field></block><block type="math_modulo"><value name="DIVIDEND"><shadow type="math_number"><field name="NUM">64</field></shadow></value><value name="DIVISOR"><shadow type="math_number"><field name="NUM">10</field></shadow></value></block><block type="math_constrain"><value name="VALUE"><shadow type="math_number"><field name="NUM">50</field></shadow></value><value name="LOW"><shadow type="math_number"><field name="NUM">1</field></shadow></value><value name="HIGH"><shadow type="math_number"><field name="NUM">100</field></shadow></value></block><block type="math_random_int"><value name="FROM"><shadow type="math_number"><field name="NUM">1</field></shadow></value><value name="TO"><shadow type="math_number"><field name="NUM">100</field></shadow></value></block><block type="math_random_float"></block></category><category name="文字" colour="#5ba58c"><block type="text"><field name="TEXT"></field></block><block type="text_join"><mutation items="2"></mutation></block><block type="text_append"><field name="VAR" id="iy2TF?tfC+)xKRGO)/]K">item</field><value name="TEXT"><shadow type="text"><field name="TEXT"></field></shadow></value></block><block type="text_length"><value name="VALUE"><shadow type="text"><field name="TEXT">abc</field></shadow></value></block><block type="text_isEmpty"><value name="VALUE"><shadow type="text"><field name="TEXT"></field></shadow></value></block><block type="text_indexOf"><field name="END">FIRST</field><value name="VALUE"><block type="variables_get"><field name="VAR" id="M2%idh.tq9TxOdPV7NL]">text</field></block></value><value name="FIND"><shadow type="text"><field name="TEXT">abc</field></shadow></value></block><block type="text_charAt"><mutation at="true"></mutation><field name="WHERE">FROM_START</field><value name="VALUE"><block type="variables_get"><field name="VAR" id="M2%idh.tq9TxOdPV7NL]">text</field></block></value></block><block type="text_getSubstring"><mutation at1="true" at2="true"></mutation><field name="WHERE1">FROM_START</field><field name="WHERE2">FROM_START</field><value name="STRING"><block type="variables_get"><field name="VAR" id="M2%idh.tq9TxOdPV7NL]">text</field></block></value></block><block type="text_changeCase"><field name="CASE">UPPERCASE</field><value name="TEXT"><shadow type="text"><field name="TEXT">abc</field></shadow></value></block><block type="text_trim"><field name="MODE">BOTH</field><value name="TEXT"><shadow type="text"><field name="TEXT">abc</field></shadow></value></block></category><category name="列表" colour="#745ba5"><block type="lists_create_with"><mutation items="0"></mutation></block><block type="lists_create_with"><mutation items="3"></mutation></block><block type="lists_repeat"><value name="NUM"><shadow type="math_number"><field name="NUM">5</field></shadow></value></block><block type="lists_length"></block><block type="lists_isEmpty"></block><block type="lists_indexOf"><field name="END">FIRST</field><value name="VALUE"><block type="variables_get"><field name="VAR" id=")y~78,a|Cb1[Zf3poymS">list</field></block></value></block><block type="lists_getIndex"><mutation statement="false" at="true"></mutation><field name="MODE">GET</field><field name="WHERE">FROM_START</field><value name="VALUE"><block type="variables_get"><field name="VAR" id=")y~78,a|Cb1[Zf3poymS">list</field></block></value></block><block type="lists_setIndex"><mutation at="true"></mutation><field name="MODE">SET</field><field name="WHERE">FROM_START</field><value name="LIST"><block type="variables_get"><field name="VAR" id=")y~78,a|Cb1[Zf3poymS">list</field></block></value></block><block type="lists_getSublist"><mutation at1="true" at2="true"></mutation><field name="WHERE1">FROM_START</field><field name="WHERE2">FROM_START</field><value name="LIST"><block type="variables_get"><field name="VAR" id=")y~78,a|Cb1[Zf3poymS">list</field></block></value></block><block type="lists_split"><mutation mode="SPLIT"></mutation><field name="MODE">SPLIT</field><value name="DELIM"><shadow type="text"><field name="TEXT">,</field></shadow></value></block><block type="lists_sort"><field name="TYPE">NUMERIC</field><field name="DIRECTION">1</field></block></category><category name="Json" colour="#66ccff"><block type="variables_set"><field name="VAR">json</field><value name="VALUE"><block type="json_createJson"></block></value></block><block type="json_getKey"><value name="VAR"><block type="variables_get"><field name="VAR">json</field></block></value><value name="propertyName"><shadow type="text"><field name="TEXT"></field></shadow></value></block><block type="json_setKey"><value name="VAR"><block type="variables_get"><field name="VAR">json</field></block></value><value name="propertyName"><shadow type="text"><field name="TEXT"></field></shadow></value></block><block type="json_deleteKey"><value name="VAR"><block type="variables_get"><field name="VAR">json</field></block></value><value name="propertyName"><shadow type="text"><field name="TEXT"></field></shadow></value></block><block type="json_getLength"></block><block type="json_stringify"></block><block type="json_parse"></block></category><category name="时间" colour="#a4a657"><block type="time"></block><block type="time2day"></block></category><sep></sep><category name="文件操作" colour="#5b80a5"><block type="readfile"><value name="path"><shadow type="text"><field name="TEXT">/sdcard/DIC/</field></shadow></value><value name="key"><shadow type="text"><field name="TEXT"></field></shadow></value><value name="defval"><shadow type="text"><field name="TEXT"></field></shadow></value></block><block type="writefile"><value name="path"><shadow type="text"><field name="TEXT">/sdcard/DIC/</field></shadow></value><value name="key"><shadow type="text"><field name="TEXT"></field></shadow></value><value name="val"><shadow type="text"><field name="TEXT"></field></shadow></value></block></category><sep></sep><category name="变量" colour="#a55b80" custom="VARIABLE"></category><category name="函数" colour="#995ba5" custom="PROCEDURE"></category></xml>
 </body>
 
 </html>
