@@ -1,3 +1,15 @@
-# ME_maker
-Medic JS可视化词库编辑器
-[Demo](https://lolii.xyz/ME_maker/)
+# Medic JS 可视化编辑器
+
+基于web的可视化程序编辑器。可将块拖在一起来构建JS词库。
+
+依赖于[Google blockly](https://developers.google.com/blockly/)
+
+Demo 地址
+> [https://miaow233.github.io/ME_maker/](https://miaow233.github.io/ME_maker/)
+
+----
+
+## Preview
+<img src="demo/preview2.png"></img>
+<img width=48% src="demo/preview1.png"></img>
+<img width=48% src="demo/screenshot.png"></img>
