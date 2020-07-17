@@ -1,0 +1,943 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="HmDem1E-R86cJK}7sj7s">群号</variable>
+    <variable id="uW*MU0UkJ{m+7`itpB$G">提交内容</variable>
+    <variable id=":,3iO=]1}HgNay$Hdmn;">num</variable>
+    <variable id="(w61BIt0Hd$~;r/|a}D8">A</variable>
+    <variable id="|bncK|D+fml*=(rQggL*">数字</variable>
+    <variable id="_E(So]OcJ*R|j|,]#5C2">$数据记录</variable>
+    <variable id="U2YMx-o/_vxd-J4A/OQw">B</variable>
+    <variable id="z`fNf2*a;;Q3c9r;qQR(">$次数记录</variable>
+    <variable id="h|Z)=cut-Tx9*a1bB37)">答案数组</variable>
+    <variable id="$67bW%d,`G[lpez^Jtd!">tmp</variable>
+    <variable id="rrMG$q@Ef4.8o]@!_2LF">提交数组</variable>
+    <variable id="/ogdlsmC2BKC3#wZH}Ym">i</variable>
+    <variable id="T4{mpV+K)nS[l(moVPH:">j</variable>
+  </variables>
+  <block type="controls_if" id="$wR~DhA(#XRX8[mlX_~z" x="13" y="13">
+    <mutation elseif="2"></mutation>
+    <value name="IF0">
+      <block type="logic_compare" id="s1]b^tgZ*?s+0oY:dn!|">
+        <field name="OP">EQ</field>
+        <value name="A">
+          <block type="bianliang" id="YFYUfA==tw:VIjB+Md0u">
+            <field name="NAME">$arg(0)</field>
+          </block>
+        </value>
+        <value name="B">
+          <block type="text" id="YO1WntfLv{ZFg.EQ-yEy">
+            <field name="TEXT">关闭1A2B</field>
+          </block>
+        </value>
+      </block>
+    </value>
+    <statement name="DO0">
+      <block type="json_deleteKey" id="rL1!_D#]JE/eHFoMr:hN">
+        <value name="VAR">
+          <block type="variables_get" id="8#j6_!|E+]mp_Co/?qQ]">
+            <field name="VAR" id="_E(So]OcJ*R|j|,]#5C2">$数据记录</field>
+          </block>
+        </value>
+        <value name="propertyName">
+          <shadow type="text" id="9z8qphJcO]dXo.%vd4#,">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+        <next>
+          <block type="json_setKey" id="3L$E49$y7g.;yyx`Blu,">
+            <value name="VAR">
+              <block type="variables_get" id="B!|{~tqHkp,M8=N?/pV^">
+                <field name="VAR" id="z`fNf2*a;;Q3c9r;qQR(">$次数记录</field>
+              </block>
+            </value>
+            <value name="propertyName">
+              <shadow type="text" id=":sS/z)Nfl!A~~C,net.h">
+                <field name="TEXT"></field>
+              </shadow>
+              <block type="bianliang" id="INV^~!1~kN?M|6X_{yhI">
+                <field name="NAME">$group</field>
+              </block>
+            </value>
+            <value name="valueName">
+              <block type="math_number" id="h.,GRnvDEe[jj*[$OZF8">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="addat" id="=p#{w)uxRiV|5e4)ol0.">
+                <field name="uin">$uin</field>
+                <field name="nick">$nick</field>
+                <next>
+                  <block type="sendmsg" id="RieE(P-yGVCk4]M2?4$c">
+                    <value name="msg">
+                      <shadow type="text" id="RKd#y6a;AKr~y3z-GaM%">
+                        <field name="TEXT"> 1A2B已关闭。</field>
+                      </shadow>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="IF1">
+      <block type="logic_compare" id="JqPd$rn5OyE?/jq$uc(]">
+        <field name="OP">EQ</field>
+        <value name="A">
+          <block type="bianliang" id=";i7[RvR|_8Xb:%/A;P2v">
+            <field name="NAME">$arg(0)</field>
+          </block>
+        </value>
+        <value name="B">
+          <block type="text" id="Z^uH54yttoXr3c=J{u1w">
+            <field name="TEXT">1A2B</field>
+          </block>
+        </value>
+      </block>
+    </value>
+    <statement name="DO1">
+      <block type="controls_if" id="6_ZE~,__qwx2)Th2pcY=">
+        <mutation else="1"></mutation>
+        <value name="IF0">
+          <block type="procedures_callreturn" id="@@`2Zo8,zmVr15_wF%h?">
+            <mutation name="是否开启1A2B">
+              <arg name="群号"></arg>
+            </mutation>
+            <value name="ARG0">
+              <block type="bianliang" id="9g0J_]z3b1[^E?O^QHK!">
+                <field name="NAME">$group</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="addat" id="S[G4q8T)oQ/?5DG;3xjH">
+            <field name="uin">$uin</field>
+            <field name="nick">$nick</field>
+            <next>
+              <block type="sendmsg" id="b@z0t-q{CRX#obE)Y]e.">
+                <value name="msg">
+                  <shadow type="text" id="t),h2;{i{]gwzjrP0O0j">
+                    <field name="TEXT"> 1A2B已经开始了，不用重复发送哦。</field>
+                  </shadow>
+                </value>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <statement name="ELSE">
+          <block type="json_setKey" id="hp^D#oO;a{Rv_:rb:wok">
+            <value name="VAR">
+              <block type="variables_get" id="[/3ZL*E9z{AkZ@q%8JT8">
+                <field name="VAR" id="_E(So]OcJ*R|j|,]#5C2">$数据记录</field>
+              </block>
+            </value>
+            <value name="propertyName">
+              <shadow type="text" id="v!bm9r?p.;0h$B%.E`Mq">
+                <field name="TEXT"></field>
+              </shadow>
+              <block type="bianliang" id="1CFS(%!Gwj_fpDdqdbcu">
+                <field name="NAME">$group</field>
+              </block>
+            </value>
+            <value name="valueName">
+              <block type="procedures_callreturn" id="4wZv`J*CM)e#4(/@L}nj">
+                <mutation name="生成1A2B"></mutation>
+              </block>
+            </value>
+            <next>
+              <block type="json_setKey" id="B0bPA?7-jap}gvU]c!1S">
+                <value name="VAR">
+                  <block type="variables_get" id="x6sROP`b0ZV`P0-/Z|}P">
+                    <field name="VAR" id="z`fNf2*a;;Q3c9r;qQR(">$次数记录</field>
+                  </block>
+                </value>
+                <value name="propertyName">
+                  <shadow type="text" id="iovL5_v^592@kpc|K_2x">
+                    <field name="TEXT"></field>
+                  </shadow>
+                  <block type="bianliang" id="s5{`l_y,Y?|/[?/T_IOW">
+                    <field name="NAME">$group</field>
+                  </block>
+                </value>
+                <value name="valueName">
+                  <block type="math_number" id="~UBI#%=?vc@+oK1b/lk}">
+                    <field name="NUM">0</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="log" id="zuA^05qftnk_,vpOZ4iP">
+                    <field name="type">i</field>
+                    <value name="msg">
+                      <block type="json_getKey" id="eOBO~K!wzupZ2wuaC5Oy">
+                        <value name="VAR">
+                          <block type="variables_get" id="*^FWU55F@MKY{hhbR7`)">
+                            <field name="VAR" id="_E(So]OcJ*R|j|,]#5C2">$数据记录</field>
+                          </block>
+                        </value>
+                        <value name="propertyName">
+                          <shadow type="text" id="jPjQB@m!g[1WIfb_|MVI">
+                            <field name="TEXT"></field>
+                          </shadow>
+                          <block type="bianliang" id="zh^AV~H|Wo:;8Jiu]~c,">
+                            <field name="NAME">$group</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="addat" id="H[`)pE-8VVvAn+@H`:vZ">
+                        <field name="uin">$uin</field>
+                        <field name="nick">$nick</field>
+                        <next>
+                          <block type="sendmsg" id="Qoy4t1u|%V|Qr2HPi!0f">
+                            <value name="msg">
+                              <shadow type="text" id="05#KyvWs0}._q}Wv8$-X">
+                                <field name="TEXT"> 1A2B开始啦！发送4位数字吧！</field>
+                              </shadow>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="IF2">
+      <block type="logic_operation" id="Km9s|~oy@mla7UhC4-A2">
+        <field name="OP">AND</field>
+        <value name="A">
+          <block type="procedures_callreturn" id="%[jlu-`Io;FcjOHxcicf">
+            <mutation name="是否为4位">
+              <arg name="num"></arg>
+            </mutation>
+            <value name="ARG0">
+              <block type="bianliang" id="X#5pO29Z+j=L/JkV?ny^">
+                <field name="NAME">$arg(0)</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <value name="B">
+          <block type="procedures_callreturn" id="e4vwu1/k)n`|-4yB0}i+">
+            <mutation name="是否为数字">
+              <arg name="num"></arg>
+            </mutation>
+            <value name="ARG0">
+              <block type="bianliang" id="rFw|Xn.RvzVPEpeoq_:h">
+                <field name="NAME">$arg(0)</field>
+              </block>
+            </value>
+          </block>
+        </value>
+      </block>
+    </value>
+    <statement name="DO2">
+      <block type="controls_if" id="GENwj,Em`{WzuAnI%x^P">
+        <value name="IF0">
+          <block type="procedures_callreturn" id="=![Nzubof=O--ew~3w0*">
+            <mutation name="是否开启1A2B">
+              <arg name="群号"></arg>
+            </mutation>
+            <value name="ARG0">
+              <block type="bianliang" id="acxS6=VzaxjP.U,1w!jP">
+                <field name="NAME">$group</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="controls_if" id="9vdjY?%/-.XQ|_X^3]Q?">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="logic_compare" id="B*4KX_X244NSW3=6d^,m">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="json_getKey" id="=^Ms3Q::pqHeMEB[V5q^">
+                    <value name="VAR">
+                      <block type="variables_get" id="RTIyMY48.4Rx@aR9cNAo">
+                        <field name="VAR" id="_E(So]OcJ*R|j|,]#5C2">$数据记录</field>
+                      </block>
+                    </value>
+                    <value name="propertyName">
+                      <shadow type="text" id="2Dvg4R~G6eTNhCfwcM^i">
+                        <field name="TEXT"></field>
+                      </shadow>
+                      <block type="bianliang" id="US/-t8;(1GPZcxbqoqv.">
+                        <field name="NAME">$group</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="bianliang" id="H1k/ktZaioFUYjcX=Z)9">
+                    <field name="NAME">$arg(0)</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="addat" id="WU9/HbS*gzh9DcTl+hd?">
+                <field name="uin">$uin</field>
+                <field name="nick">$nick</field>
+                <next>
+                  <block type="sendmsg" id="jFC50#]xzB^m-+3!i,}7">
+                    <value name="msg">
+                      <shadow type="text" id="W=|2Dghj]V/Jd)|s$P#C">
+                        <field name="TEXT"></field>
+                      </shadow>
+                      <block type="text_join" id="{YZPT2O[zrX*Di(B4;6^">
+                        <mutation items="5"></mutation>
+                        <value name="ADD0">
+                          <block type="text" id="0b0MaB:yqFxGsu`NGseq">
+                            <field name="TEXT"> 答对啦！答案是：</field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="json_getKey" id="C3$KCczhi8(3f-2ACrg_">
+                            <value name="VAR">
+                              <block type="variables_get" id="Rm]eYAjb5kO2WYg|vD14">
+                                <field name="VAR" id="_E(So]OcJ*R|j|,]#5C2">$数据记录</field>
+                              </block>
+                            </value>
+                            <value name="propertyName">
+                              <shadow type="text" id="=jn0x|3q;j~`}Up}4QZN">
+                                <field name="TEXT"></field>
+                              </shadow>
+                              <block type="bianliang" id="MsVyv_k]hy{ha%73`N?i">
+                                <field name="NAME">$group</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="ADD2">
+                          <block type="text" id="^s*i;n=`belInX^UJERl">
+                            <field name="TEXT">\n一共猜了：</field>
+                          </block>
+                        </value>
+                        <value name="ADD3">
+                          <block type="json_getKey" id="FCCM_4^3|dN^IV[K(,UX">
+                            <value name="VAR">
+                              <block type="variables_get" id="anb;?YI=fJ[LngWWOHU/">
+                                <field name="VAR" id="z`fNf2*a;;Q3c9r;qQR(">$次数记录</field>
+                              </block>
+                            </value>
+                            <value name="propertyName">
+                              <shadow type="text" id="klFJkc+7PfR,h7JeskpX">
+                                <field name="TEXT"></field>
+                              </shadow>
+                              <block type="bianliang" id="Sr=^`s1*@vO9uN(kdWsA">
+                                <field name="NAME">$group</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="ADD4">
+                          <block type="text" id="KE~G(9mUSY3!%yJ;ExKU">
+                            <field name="TEXT">次\n发送「1A2B」再来一局吧！</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="json_deleteKey" id="!v?#wmuN}Ux7q#-6$F1/">
+                        <value name="VAR">
+                          <block type="variables_get" id="|3Cf}{.3G#3J%eZ%HI@o">
+                            <field name="VAR" id="_E(So]OcJ*R|j|,]#5C2">$数据记录</field>
+                          </block>
+                        </value>
+                        <value name="propertyName">
+                          <shadow type="text" id="=^|g3xpbk8XO6|VaT4pF">
+                            <field name="TEXT"></field>
+                          </shadow>
+                          <block type="bianliang" id="7y7B/]k^#p-//D.?Pc4Y">
+                            <field name="NAME">$group</field>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="json_setKey" id="vCpyj+2d3smS[:eGfqb_">
+                            <value name="VAR">
+                              <block type="variables_get" id="Eq0L#|6zTn9!@!fZKgy)">
+                                <field name="VAR" id="z`fNf2*a;;Q3c9r;qQR(">$次数记录</field>
+                              </block>
+                            </value>
+                            <value name="propertyName">
+                              <shadow type="text" id=".QR4Lay!-}dSG!PYqavh">
+                                <field name="TEXT"></field>
+                              </shadow>
+                              <block type="bianliang" id="wzY)Rqqus0Nd+Af]-UbB">
+                                <field name="NAME">$group</field>
+                              </block>
+                            </value>
+                            <value name="valueName">
+                              <block type="math_number" id="=2Q%J7hqRgT-/bXKAJAF">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="addat" id="g|TT+PaXZ[T[xgOEKmdh">
+                <field name="uin">$uin</field>
+                <field name="nick">$nick</field>
+                <next>
+                  <block type="sendmsg" id="Wya/$kV$eXy(XKyG.}Oo">
+                    <value name="msg">
+                      <shadow type="text" id="8^B{Ox%igyqc#/S,r4Ub">
+                        <field name="TEXT"></field>
+                      </shadow>
+                      <block type="text_join" id="zM]cU$`!P1k,3{,^v(_.">
+                        <mutation items="3"></mutation>
+                        <value name="ADD0">
+                          <block type="bianliang" id="6z=Rg/JezZ0HW]P@:EFa">
+                            <field name="NAME">$arg(0)</field>
+                          </block>
+                        </value>
+                        <value name="ADD1">
+                          <block type="text" id="46;._Q-7*f#$eLX`3l,1">
+                            <field name="TEXT">|</field>
+                          </block>
+                        </value>
+                        <value name="ADD2">
+                          <block type="procedures_callreturn" id="}]#vo8Z:hmwV$sC.z-of">
+                            <mutation name="判断1A2B">
+                              <arg name="群号"></arg>
+                              <arg name="提交内容"></arg>
+                            </mutation>
+                            <value name="ARG0">
+                              <block type="bianliang" id="bn|FEiy.U%9_}ma(dUT@">
+                                <field name="NAME">$group</field>
+                              </block>
+                            </value>
+                            <value name="ARG1">
+                              <block type="bianliang" id="2k|xVy)XU*@8]3LUFZm(">
+                                <field name="NAME">$arg(0)</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="json_setKey" id="M*yZ%T^_RmjU9$F#zmIY">
+                        <value name="VAR">
+                          <block type="variables_get" id="D^##d60jP5$dhDy:=-)b">
+                            <field name="VAR" id="z`fNf2*a;;Q3c9r;qQR(">$次数记录</field>
+                          </block>
+                        </value>
+                        <value name="propertyName">
+                          <shadow type="text" id="8BfYNqT?51i^=%8SIg%~">
+                            <field name="TEXT"></field>
+                          </shadow>
+                          <block type="bianliang" id="hy~w3|1/^):rPzHt`5wr">
+                            <field name="NAME">$group</field>
+                          </block>
+                        </value>
+                        <value name="valueName">
+                          <block type="math_arithmetic" id="X!xFsqM39T|`9XOMtaQw">
+                            <field name="OP">ADD</field>
+                            <value name="A">
+                              <shadow type="math_number" id="16!Xr40O-9pdEI[Hq`#f">
+                                <field name="NUM">1</field>
+                              </shadow>
+                              <block type="json_getKey" id="hSLF#qa_xU8qUuLS,w/H">
+                                <value name="VAR">
+                                  <block type="variables_get" id="g@OOP(c3p8HrY3d]?RpO">
+                                    <field name="VAR" id="z`fNf2*a;;Q3c9r;qQR(">$次数记录</field>
+                                  </block>
+                                </value>
+                                <value name="propertyName">
+                                  <shadow type="text" id="|a_n=8RX;4S2hX;wmf)+">
+                                    <field name="TEXT"></field>
+                                  </shadow>
+                                  <block type="bianliang" id="}oI-:c1F(}-|qef]m)+@">
+                                    <field name="NAME">$group</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <shadow type="math_number" id="$VA76@ZFFp*@0t)t^f}I">
+                                <field name="NUM">1</field>
+                              </shadow>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <next>
+      <block type="setcontinue" id="X0}yF([*oG?@XNFg1:~q">
+        <field name="NAME">$disableNext()</field>
+      </block>
+    </next>
+  </block>
+  <block type="procedures_defreturn" id="*=z(uY+!.l,OrK:7^%Q^" collapsed="true" x="612" y="12">
+    <mutation statements="false">
+      <arg name="群号" varid="HmDem1E-R86cJK}7sj7s"></arg>
+    </mutation>
+    <field name="NAME">是否开启1A2B</field>
+    <comment pinned="false" h="80" w="160">是否开启1A2B</comment>
+    <value name="RETURN">
+      <block type="procedures_callreturn" id="nWOY884#e@6CbEF@2Bye">
+        <mutation name="是否为数字">
+          <arg name="num"></arg>
+        </mutation>
+        <value name="ARG0">
+          <block type="json_getKey" id="Ocs6dXrgeH}n05!5QvZ9">
+            <value name="VAR">
+              <block type="variables_get" id="4.BEi1qnSzPt~9?NIc}3">
+                <field name="VAR" id="_E(So]OcJ*R|j|,]#5C2">$数据记录</field>
+              </block>
+            </value>
+            <value name="propertyName">
+              <shadow type="text" id="ok;^4|?$pEKBIQtcYERA">
+                <field name="TEXT"></field>
+              </shadow>
+              <block type="variables_get" id="yl;qsNZmpwClxYVDr!Ew">
+                <field name="VAR" id="HmDem1E-R86cJK}7sj7s">群号</field>
+              </block>
+            </value>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+  <block type="procedures_defreturn" id="|W6N*62uJxcdr9fU9;X;" collapsed="true" x="612" y="88">
+    <mutation>
+      <arg name="群号" varid="HmDem1E-R86cJK}7sj7s"></arg>
+      <arg name="提交内容" varid="uW*MU0UkJ{m+7`itpB$G"></arg>
+    </mutation>
+    <field name="NAME">判断1A2B</field>
+    <comment pinned="false" h="80" w="160">判断1A2B</comment>
+    <statement name="STACK">
+      <block type="variables_set" id="D?(ulK3ltTfbXtOS7`V/">
+        <field name="VAR" id="(w61BIt0Hd$~;r/|a}D8">A</field>
+        <value name="VALUE">
+          <block type="math_number" id="N2XR5Vh[7@w]5SW9U%.D">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="DlbGD/0(gohsT!s^n-SD">
+            <field name="VAR" id="U2YMx-o/_vxd-J4A/OQw">B</field>
+            <value name="VALUE">
+              <block type="math_number" id="j!FY;uiXE~iO[V,KX61M">
+                <field name="NUM">0</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="8jTNi^g/4`M+AuhohPF=">
+                <field name="VAR" id="h|Z)=cut-Tx9*a1bB37)">答案数组</field>
+                <value name="VALUE">
+                  <block type="lists_split" id="h[%=zY|s}H@W@$imbQ:J">
+                    <mutation mode="SPLIT"></mutation>
+                    <field name="MODE">SPLIT</field>
+                    <value name="INPUT">
+                      <block type="json_getKey" id="yntr[w`jrgAOp.Q%Pz!C">
+                        <value name="VAR">
+                          <block type="variables_get" id="gWwQtpY};mSvAc[Yk,Lu">
+                            <field name="VAR" id="_E(So]OcJ*R|j|,]#5C2">$数据记录</field>
+                          </block>
+                        </value>
+                        <value name="propertyName">
+                          <shadow type="text" id="ZS!A?o}J*#|:{g`jCoIP">
+                            <field name="TEXT"></field>
+                          </shadow>
+                          <block type="variables_get" id="Sq-eHQX5`/Rp*ZBl_E?q">
+                            <field name="VAR" id="HmDem1E-R86cJK}7sj7s">群号</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="DELIM">
+                      <shadow type="text" id="S!,A~hXRySl8.b9|Jtjk">
+                        <field name="TEXT"></field>
+                      </shadow>
+                      <block type="text" id=",]9xHf}h`lusa+rA5/Ag">
+                        <field name="TEXT"></field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="e/A7V-n*~6bP+,Oa|OBu">
+                    <field name="VAR" id="rrMG$q@Ef4.8o]@!_2LF">提交数组</field>
+                    <value name="VALUE">
+                      <block type="lists_split" id=";@IWAYYebR,)ZokVspZ^">
+                        <mutation mode="SPLIT"></mutation>
+                        <field name="MODE">SPLIT</field>
+                        <value name="INPUT">
+                          <block type="variables_get" id="$[qa1mr%{]5SikOj=|;j">
+                            <field name="VAR" id="uW*MU0UkJ{m+7`itpB$G">提交内容</field>
+                          </block>
+                        </value>
+                        <value name="DELIM">
+                          <shadow type="text" id="D45TBh:v,KWQFUVVY@~J">
+                            <field name="TEXT"></field>
+                          </shadow>
+                          <block type="text" id="UcN%2@[LIzAM6^ht6yV;">
+                            <field name="TEXT"></field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="controls_for" id="4WtX~Oh]F[n6CeR?]p9x">
+                        <field name="VAR" id="/ogdlsmC2BKC3#wZH}Ym">i</field>
+                        <value name="FROM">
+                          <shadow type="math_number" id="rH2dD^dX@M,Cy:Y3rIur">
+                            <field name="NUM">1</field>
+                          </shadow>
+                        </value>
+                        <value name="TO">
+                          <shadow type="math_number" id="r$4eG}SZY8DTl`UoAki#">
+                            <field name="NUM">4</field>
+                          </shadow>
+                        </value>
+                        <value name="BY">
+                          <shadow type="math_number" id="h0@2H%%5jH)wpp#:~90;">
+                            <field name="NUM">1</field>
+                          </shadow>
+                        </value>
+                        <statement name="DO">
+                          <block type="controls_for" id="]cD35gRd005aD$g.0=gW">
+                            <field name="VAR" id="T4{mpV+K)nS[l(moVPH:">j</field>
+                            <value name="FROM">
+                              <shadow type="math_number" id="3^}:`87rYA=F6bE12Ee5">
+                                <field name="NUM">1</field>
+                              </shadow>
+                            </value>
+                            <value name="TO">
+                              <shadow type="math_number" id="IL}~HFNSvymfPZ[|`%]$">
+                                <field name="NUM">4</field>
+                              </shadow>
+                            </value>
+                            <value name="BY">
+                              <shadow type="math_number" id="PRCE=_aXO:?|Z@trxT3b">
+                                <field name="NUM">1</field>
+                              </shadow>
+                            </value>
+                            <statement name="DO">
+                              <block type="controls_if" id="/PI?Pg0W?hwTVSNgx/b{">
+                                <value name="IF0">
+                                  <block type="logic_compare" id="ev/Je99?qoP@Oc%Lbr;/">
+                                    <field name="OP">EQ</field>
+                                    <value name="A">
+                                      <block type="lists_getIndex" id="a=]Sae#E`]N8)s~ZdPRT">
+                                        <mutation statement="false" at="true"></mutation>
+                                        <field name="MODE">GET</field>
+                                        <field name="WHERE">FROM_START</field>
+                                        <value name="VALUE">
+                                          <block type="variables_get" id="aJJn}1hj~N+iS=Qyi3/j">
+                                            <field name="VAR" id="h|Z)=cut-Tx9*a1bB37)">答案数组</field>
+                                          </block>
+                                        </value>
+                                        <value name="AT">
+                                          <block type="variables_get" id="TS:Bo;s|v#wnsPiH~N-^">
+                                            <field name="VAR" id="/ogdlsmC2BKC3#wZH}Ym">i</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="lists_getIndex" id="$%!%_WFCz;g@/v)|gB{0">
+                                        <mutation statement="false" at="true"></mutation>
+                                        <field name="MODE">GET</field>
+                                        <field name="WHERE">FROM_START</field>
+                                        <value name="VALUE">
+                                          <block type="variables_get" id="zcA33?/?^dpTU!v5y56:">
+                                            <field name="VAR" id="rrMG$q@Ef4.8o]@!_2LF">提交数组</field>
+                                          </block>
+                                        </value>
+                                        <value name="AT">
+                                          <block type="variables_get" id="fy509#uLcYn958`y:B.i">
+                                            <field name="VAR" id="T4{mpV+K)nS[l(moVPH:">j</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <statement name="DO0">
+                                  <block type="controls_if" id="hV^fHBTg]Xh^RZ{lCTOD">
+                                    <mutation else="1"></mutation>
+                                    <value name="IF0">
+                                      <block type="logic_compare" id="monnB#er_$fDEy-MnW*U">
+                                        <field name="OP">EQ</field>
+                                        <value name="A">
+                                          <block type="variables_get" id="$e%ucab?x,lpAqQPf-;n">
+                                            <field name="VAR" id="/ogdlsmC2BKC3#wZH}Ym">i</field>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="variables_get" id=";.4_^6qwUIZcAVVTd$N(">
+                                            <field name="VAR" id="T4{mpV+K)nS[l(moVPH:">j</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <statement name="DO0">
+                                      <block type="math_change" id="^ag=GNBMz|1|Z,j.n-BI">
+                                        <field name="VAR" id="(w61BIt0Hd$~;r/|a}D8">A</field>
+                                        <value name="DELTA">
+                                          <shadow type="math_number" id="-x1vEqfR4]5|Il]jy_~k">
+                                            <field name="NUM">1</field>
+                                          </shadow>
+                                        </value>
+                                      </block>
+                                    </statement>
+                                    <statement name="ELSE">
+                                      <block type="math_change" id="Gbpv-HH#X=|tM}cK)8B^">
+                                        <field name="VAR" id="U2YMx-o/_vxd-J4A/OQw">B</field>
+                                        <value name="DELTA">
+                                          <shadow type="math_number" id="b5*:usp.ph83CW-}U*.B">
+                                            <field name="NUM">1</field>
+                                          </shadow>
+                                        </value>
+                                      </block>
+                                    </statement>
+                                  </block>
+                                </statement>
+                              </block>
+                            </statement>
+                          </block>
+                        </statement>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="RETURN">
+      <block type="text_join" id="m7VcdP{kv.n`%6Gx[K~^">
+        <mutation items="4"></mutation>
+        <value name="ADD0">
+          <block type="variables_get" id="3q*wj_q);szR!6$Go^OP">
+            <field name="VAR" id="(w61BIt0Hd$~;r/|a}D8">A</field>
+          </block>
+        </value>
+        <value name="ADD1">
+          <block type="text" id="]dKy}%MrU0:QvqubU$*C">
+            <field name="TEXT">A</field>
+          </block>
+        </value>
+        <value name="ADD2">
+          <block type="variables_get" id="e-%Yco8aJr~;Pp##xEy7">
+            <field name="VAR" id="U2YMx-o/_vxd-J4A/OQw">B</field>
+          </block>
+        </value>
+        <value name="ADD3">
+          <block type="text" id="aC?)Sr4.V4t^rWKLp*$Q">
+            <field name="TEXT">B</field>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+  <block type="procedures_defreturn" id="LO0NcGiu`|U[s=8GlnbQ" collapsed="true" x="613" y="162">
+    <field name="NAME">生成1A2B</field>
+    <comment pinned="false" h="80" w="160">生成1A2B</comment>
+    <statement name="STACK">
+      <block type="variables_set" id="qI}tl[wCDn.DYi(v#{Bl">
+        <field name="VAR" id="|bncK|D+fml*=(rQggL*">数字</field>
+        <value name="VALUE">
+          <block type="text" id="dmU5=`=c~H%m,hI|FYhE">
+            <field name="TEXT"></field>
+          </block>
+        </value>
+        <next>
+          <block type="controls_whileUntil" id="ZK?2s-RA0#HJK%-;CJWs">
+            <field name="MODE">WHILE</field>
+            <value name="BOOL">
+              <block type="logic_compare" id="Y?5`NoFA^4lSoFOj5afA">
+                <field name="OP">LT</field>
+                <value name="A">
+                  <block type="text_length" id="/JlMLg?EbmhxI53VtIiX">
+                    <value name="VALUE">
+                      <shadow type="text" id="Y+wnsL0`4Cfoy9WQifp9">
+                        <field name="TEXT">abc</field>
+                      </shadow>
+                      <block type="variables_get" id="illor]47u=5Z?nZ__*uM">
+                        <field name="VAR" id="|bncK|D+fml*=(rQggL*">数字</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="math_number" id="HO3m[^Buejb7i)GVWh0$">
+                    <field name="NUM">4</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO">
+              <block type="variables_set" id="j|vZHWv%W--JS0-S`wp;">
+                <field name="VAR" id="$67bW%d,`G[lpez^Jtd!">tmp</field>
+                <value name="VALUE">
+                  <block type="math_random_int" id="1vnS}7`@lJjq3ZJ$-@U+">
+                    <value name="FROM">
+                      <shadow type="math_number" id="oWc]pBzW!:sE]mf{XsR8">
+                        <field name="NUM">1</field>
+                      </shadow>
+                    </value>
+                    <value name="TO">
+                      <shadow type="math_number" id="VqY^m`d2p}[dvZTM6e|k">
+                        <field name="NUM">9</field>
+                      </shadow>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_if" id="v#O$uBy^a+ashUIYZ*7}">
+                    <value name="IF0">
+                      <block type="logic_compare" id="QY(v4|J1gjNQDq?;p#(c">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="text_indexOf" id="],z%Uaz*e7po^Dm4,[#H">
+                            <field name="END">FIRST</field>
+                            <value name="VALUE">
+                              <block type="variables_get" id="ad!7^yovWfDMLXCDsFm0">
+                                <field name="VAR" id="|bncK|D+fml*=(rQggL*">数字</field>
+                              </block>
+                            </value>
+                            <value name="FIND">
+                              <shadow type="text" id="d8CKWwBwumr#%~/=argo">
+                                <field name="TEXT">abc</field>
+                              </shadow>
+                              <block type="variables_get" id="WL7rnx}!$VT8)+L|Kc-@">
+                                <field name="VAR" id="$67bW%d,`G[lpez^Jtd!">tmp</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="by3K#njY5+AWBP0_D{*P">
+                            <field name="NUM">0</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="variables_set" id="q$LCIz:|hs1?uO:7+|Q}">
+                        <field name="VAR" id="|bncK|D+fml*=(rQggL*">数字</field>
+                        <value name="VALUE">
+                          <block type="text_join" id="EaflYJ0I4}F1#??5Mib5" inline="true">
+                            <mutation items="2"></mutation>
+                            <value name="ADD0">
+                              <block type="variables_get" id="ppj7jENPpzuGTU70%VyE">
+                                <field name="VAR" id="|bncK|D+fml*=(rQggL*">数字</field>
+                              </block>
+                            </value>
+                            <value name="ADD1">
+                              <block type="variables_get" id="I}q-?`s_+tqtKq@rw@x1">
+                                <field name="VAR" id="$67bW%d,`G[lpez^Jtd!">tmp</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="RETURN">
+      <block type="variables_get" id="d;TEdxMP[{f8e[AG)UL|">
+        <field name="VAR" id="|bncK|D+fml*=(rQggL*">数字</field>
+      </block>
+    </value>
+  </block>
+  <block type="procedures_defreturn" id="{cQ|06TYnD+{NBq:CaPI" collapsed="true" x="613" y="238">
+    <mutation statements="false">
+      <arg name="num" varid=":,3iO=]1}HgNay$Hdmn;"></arg>
+    </mutation>
+    <field name="NAME">是否为数字</field>
+    <comment pinned="false" h="80" w="160">是否为数字</comment>
+    <value name="RETURN">
+      <block type="logic_compare" id="Dfla]87`MsQYgE^A)6YY">
+        <field name="OP">EQ</field>
+        <value name="A">
+          <block type="math_arithmetic" id="TsE6_KjvH,7(vMMy1G55">
+            <field name="OP">DIVIDE</field>
+            <value name="A">
+              <shadow type="math_number" id="x_g~426j9dsZom!t2|U,">
+                <field name="NUM">1</field>
+              </shadow>
+              <block type="variables_get" id="bvtGjOOk](J;kjD]6p}i">
+                <field name="VAR" id=":,3iO=]1}HgNay$Hdmn;">num</field>
+              </block>
+            </value>
+            <value name="B">
+              <shadow type="math_number" id="QxFwF4+1DnPTJ}tsQWXP">
+                <field name="NUM">1</field>
+              </shadow>
+            </value>
+          </block>
+        </value>
+        <value name="B">
+          <block type="variables_get" id="I}w,ih).eQcUU#QuN3Vh">
+            <field name="VAR" id=":,3iO=]1}HgNay$Hdmn;">num</field>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+  <block type="procedures_defreturn" id="`^@EsiAKUf.So)Cl7EC0" collapsed="true" x="613" y="313">
+    <mutation statements="false">
+      <arg name="num" varid=":,3iO=]1}HgNay$Hdmn;"></arg>
+    </mutation>
+    <field name="NAME">是否为4位</field>
+    <comment pinned="false" h="80" w="160">是否为4位</comment>
+    <value name="RETURN">
+      <block type="logic_compare" id="jU8x](em]Btm3({2hoT~">
+        <field name="OP">EQ</field>
+        <value name="A">
+          <block type="text_length" id="*R0OSpb@]k9gU7mki0D.">
+            <value name="VALUE">
+              <shadow type="text" id="K@9/K+Ua_l5=QS^Nppvv">
+                <field name="TEXT">abc</field>
+              </shadow>
+              <block type="variables_get" id="h/!F}LETi9$Mbzy5/k)M">
+                <field name="VAR" id=":,3iO=]1}HgNay$Hdmn;">num</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <value name="B">
+          <block type="math_number" id=".)/)vS2lxEE5vuYlo%_R">
+            <field name="NUM">4</field>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+</xml>
