@@ -10,6 +10,6 @@ Demo 地址
 ----
 
 ## Preview
-<img src="demo/preview2.png"></img>
-<img width=48% src="demo/preview1.png"></img>
-<img width=48% src="demo/screenshot.png"></img>
+<img src="https://cdn.jsdelivr.net/gh/Miaow233/ME_maker/demo/preview2.png"></img>
+<img width=48% src="https://cdn.jsdelivr.net/gh/Miaow233/ME_maker/demo/preview1.png"></img>
+<img width=48% src="https://cdn.jsdelivr.net/gh/Miaow233/ME_maker/demo/screenshot.png"></img>
