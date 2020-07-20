@@ -151,7 +151,7 @@ Blockly.JavaScript.init = function(workspace) {
   // Declare all of the variables.
   if (defvars.length) {
     Blockly.JavaScript.definitions_['variables'] =
-        'var ' + defvars.join(', ') + ';\n//初始化变量';
+        'var ' + defvars.join(', ') + ';';
   }
 };
 
@@ -170,7 +170,7 @@ Blockly.JavaScript.finish = function(code) {
   delete Blockly.JavaScript.definitions_;
   delete Blockly.JavaScript.functionNames_;
   Blockly.JavaScript.variableDB_.reset();
-  return definitions.join('\n') + '\n//定义函数\n' + code;
+  return definitions.join('\n') + '\n' + code;
 };
 
 /**

@@ -86,3 +86,15 @@ Blockly.JavaScript['setcontinue'] = function (block) {
     var code = dropdown_name + ';\n';
     return code;
 };
+
+Blockly.JavaScript['log'] = function (block) {
+    var dropdown_type = block.getFieldValue('type');
+    var value_msg = Blockly.JavaScript.valueToCode(block, 'msg', Blockly.JavaScript.ORDER_ATOMIC);
+    // TODO: Assemble JavaScript into code variable.
+    if (!dropdown_type.length == false) {
+        var code = '$log(' + dropdown_type + ',' + value_msg + ');\n'
+    } else {
+        var code = '$log(' + value_msg + ');\n'
+    }
+    return code;
+};

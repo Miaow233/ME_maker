@@ -1,0 +1,716 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable id="Fwq8NPFF{=A9v9uGS{XM">网易云鸽曲id</variable>
+    <variable id="reTl.gvx4vBF+Oy9Nh|j">HTTP响应内容</variable>
+    <variable id="_8}GhnMW5{_.-p*$_Ec4">网易云鸽曲原始数据</variable>
+    <variable id="CU.*s{VhAQ%YS^n@mCuT">QQ鸽曲原始数据</variable>
+    <variable id="e5gdeGiZoSFlcy=bc70D">QQ鸽曲id</variable>
+  </variables>
+  <block type="controls_if" id="8,TzT)@(F(WZls_Jn@G#" x="13" y="13">
+    <value name="IF0">
+      <block type="logic_compare" id=".VnN7PCRH.LZgTKF9VQS">
+        <field name="OP">EQ</field>
+        <value name="A">
+          <block type="text_getSubstring" id="yh{U,^z|6XE1]4j!gmA5">
+            <mutation at1="false" at2="true"></mutation>
+            <field name="WHERE1">FIRST</field>
+            <field name="WHERE2">FROM_START</field>
+            <value name="STRING">
+              <block type="bianliang" id="T5%Fq=+qm@aQpeIX=!vp">
+                <field name="NAME">$arg(0)</field>
+              </block>
+            </value>
+            <value name="AT2">
+              <block type="math_number" id="RX{@bkNKz#Um.q!W0oxb">
+                <field name="NUM">6</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <value name="B">
+          <block type="text" id="WC$74sMu_pqIOkj+(#QG">
+            <field name="TEXT">/music</field>
+          </block>
+        </value>
+      </block>
+    </value>
+    <statement name="DO0">
+      <block type="sendmsg" id="cG[O}Auz@+B)Cq+;F?%~">
+        <value name="msg">
+          <shadow type="text" id="y{{{PLIDQeYF3+h|e#KH">
+            <field name="TEXT"></field>
+          </shadow>
+          <block type="text" id="oB{Oliq)=Xww3FstTf-j">
+            <field name="TEXT">歌曲解析功能列表：(回复命令即可)\n/netease &lt;歌曲ID&gt;\n/qqmusic &lt;歌曲ID&gt;</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+    <next>
+      <block type="controls_if" id="Nz2^y]zKkSef)AcKj0Xg">
+        <value name="IF0">
+          <block type="logic_compare" id="A?,V?~8/;7[1j@2FU_R^">
+            <field name="OP">EQ</field>
+            <value name="A">
+              <block type="text_getSubstring" id="59RdWlH@24I7Rv/c)-Db">
+                <mutation at1="false" at2="true"></mutation>
+                <field name="WHERE1">FIRST</field>
+                <field name="WHERE2">FROM_START</field>
+                <value name="STRING">
+                  <block type="bianliang" id="%#?ELu2i+9Glv}A_c2W{">
+                    <field name="NAME">$arg(0)</field>
+                  </block>
+                </value>
+                <value name="AT2">
+                  <block type="math_number" id="W(Ubu5wyR]Zji9^vBkgG">
+                    <field name="NUM">8</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <value name="B">
+              <block type="text" id="Qmfu1cvMU[;6vifG0d?H">
+                <field name="TEXT">/netease</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <statement name="DO0">
+          <block type="controls_if" id="H%{~/D~eliWw2@wzx3Mc">
+            <mutation else="1"></mutation>
+            <value name="IF0">
+              <block type="logic_compare" id="$Lww7HD**ry*~PtAs#T=">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="text_isEmpty" id="FI!g]q!-oRO;rm4TA]{q">
+                    <value name="VALUE">
+                      <shadow type="text" id="Ba4B94upzUQ5)SuL`23%">
+                        <field name="TEXT"></field>
+                      </shadow>
+                      <block type="text_getSubstring" id="89kJ%yXvrhLyq~a2p!:]">
+                        <mutation at1="true" at2="false"></mutation>
+                        <field name="WHERE1">FROM_START</field>
+                        <field name="WHERE2">LAST</field>
+                        <value name="STRING">
+                          <block type="bianliang" id="N=]u7O^.?#^$/4OheQ[c">
+                            <field name="NAME">$arg(0)</field>
+                          </block>
+                        </value>
+                        <value name="AT1">
+                          <block type="math_number" id="l$a|s%`XdsvCqrwcG)uj">
+                            <field name="NUM">10</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="logic_boolean" id="mlk{$`t?14ut*pmu%HA9">
+                    <field name="BOOL">TRUE</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="sendmsg" id="4FzuvQJ|MQv]Vq|Bt.]?">
+                <value name="msg">
+                  <shadow type="text">
+                    <field name="TEXT"></field>
+                  </shadow>
+                  <block type="text" id="*Ybs0gyT+o/[x477)j]q">
+                    <field name="TEXT">歌曲解析功能列表：(回复命令即可)\n/netease &lt;歌曲ID&gt;\n/qqmusic &lt;歌曲ID&gt;</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <statement name="ELSE">
+              <block type="variables_set" id="Ua6R;fdVAT;6{I^xS?A!">
+                <field name="VAR" id="Fwq8NPFF{=A9v9uGS{XM">网易云鸽曲id</field>
+                <value name="VALUE">
+                  <block type="text_getSubstring" id="M{T{or#a529Y.JL[v:hd">
+                    <mutation at1="true" at2="false"></mutation>
+                    <field name="WHERE1">FROM_START</field>
+                    <field name="WHERE2">LAST</field>
+                    <value name="STRING">
+                      <block type="bianliang" id="?Cr/Dx1zsFIG-~wofd7F">
+                        <field name="NAME">$arg(0)</field>
+                      </block>
+                    </value>
+                    <value name="AT1">
+                      <block type="math_number" id="+x0y(AMdq;X6#{*^kXJ5">
+                        <field name="NUM">10</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" id="%gTyImye@,;4{9O0(geO">
+                    <field name="VAR" id="reTl.gvx4vBF+Oy9Nh|j">HTTP响应内容</field>
+                    <value name="VALUE">
+                      <block type="access" id="qr:DHR,27Zg`g+OB4se8">
+                        <value name="url">
+                          <block type="text_join" id="4mkIBkb@2l1U#G~t6^MI">
+                            <mutation items="3"></mutation>
+                            <value name="ADD0">
+                              <block type="text" id="!E-E??1DTc=Y_84+1*wm">
+                                <field name="TEXT">https://tenapi.cn/music/?id=</field>
+                              </block>
+                            </value>
+                            <value name="ADD1">
+                              <block type="variables_get" id="9fivSo|,$n3R`h/~VkJg">
+                                <field name="VAR" id="Fwq8NPFF{=A9v9uGS{XM">网易云鸽曲id</field>
+                              </block>
+                            </value>
+                            <value name="ADD2">
+                              <block type="text" id="Q$DQQO%+~Y.]6h3PC64/">
+                                <field name="TEXT">&amp;type=song&amp;media=netease</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="controls_if" id="}^[RP?KH;:-U:x|d^H#h">
+                        <mutation else="1"></mutation>
+                        <value name="IF0">
+                          <block type="logic_compare" id="!3juDxgAYIiJ$}o;R71r">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="text_isEmpty" id="WyUIJQ@,.:P~g(VKJ8aP">
+                                <value name="VALUE">
+                                  <shadow type="text" id="7}ngC~WmGBB5m$00.u9E">
+                                    <field name="TEXT"></field>
+                                  </shadow>
+                                  <block type="variables_get" id="eTMMDpo7:YDF?,vnLYY]">
+                                    <field name="VAR" id="reTl.gvx4vBF+Oy9Nh|j">HTTP响应内容</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="logic_boolean" id="`@il8^zKh5Il}k=`4|m6">
+                                <field name="BOOL">FALSE</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <statement name="DO0">
+                          <block type="variables_set" id="~ITt_`|3K15FXWM|_|0H">
+                            <field name="VAR" id="_8}GhnMW5{_.-p*$_Ec4">网易云鸽曲原始数据</field>
+                            <value name="VALUE">
+                              <block type="json_parse" id="LOYrW@:.$V2$W#/D(`[e">
+                                <value name="content">
+                                  <block type="variables_get" id="ev|eKY(|Uqi;/j4jA5hi">
+                                    <field name="VAR" id="reTl.gvx4vBF+Oy9Nh|j">HTTP响应内容</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="controls_if" id="9?QXIW/ZbvT,$`p8vcuS">
+                                <mutation elseif="1"></mutation>
+                                <value name="IF0">
+                                  <block type="logic_compare" id="EUoW+-F);Z6k~LLd[H/P">
+                                    <field name="OP">EQ</field>
+                                    <value name="A">
+                                      <block type="json_getKey" id="_9oU_OXG|2#mB;xST.iO">
+                                        <value name="VAR">
+                                          <block type="variables_get" id="HNNxoGFc6|Q9Aehh6fRi">
+                                            <field name="VAR" id="_8}GhnMW5{_.-p*$_Ec4">网易云鸽曲原始数据</field>
+                                          </block>
+                                        </value>
+                                        <value name="propertyName">
+                                          <shadow type="text" id="Q}H)?@m3,2`S)#B?[AT9">
+                                            <field name="TEXT">name</field>
+                                          </shadow>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="text" id="9yMXQ;]N~21|);t/N^*N">
+                                        <field name="TEXT">null</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <statement name="DO0">
+                                  <block type="sendmsg" id="cPCfb:g96ykd%Z6Os3%i">
+                                    <value name="msg">
+                                      <shadow type="text" id="Uo?HCc@9NzSTjBhh?50V">
+                                        <field name="TEXT">错误：我都没见过这首鸽曲</field>
+                                      </shadow>
+                                    </value>
+                                  </block>
+                                </statement>
+                                <value name="IF1">
+                                  <block type="logic_compare" id="e1jwie-ff!M,bg,T48IT">
+                                    <field name="OP">NEQ</field>
+                                    <value name="A">
+                                      <block type="json_getKey" id="S=?wdllQ1Wk0w/.G7WYk">
+                                        <value name="VAR">
+                                          <block type="variables_get" id=":xB#,[g_9Uq,X=BmVTHm">
+                                            <field name="VAR" id="_8}GhnMW5{_.-p*$_Ec4">网易云鸽曲原始数据</field>
+                                          </block>
+                                        </value>
+                                        <value name="propertyName">
+                                          <shadow type="text" id="YT1(DLCdW%IP^4nWgL:2">
+                                            <field name="TEXT">name</field>
+                                          </shadow>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="text" id="a3,TSsQ44E!BN7_0V)PY">
+                                        <field name="TEXT">null</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <statement name="DO1">
+                                  <block type="sendmsg" id="Ni_xABj:Tku]I?QFhD7+">
+                                    <value name="msg">
+                                      <shadow type="text" id="Ox^=}bIAe=$tC3fB2.Z?">
+                                        <field name="TEXT"></field>
+                                      </shadow>
+                                      <block type="text_join" id="3ZQd,6PTl[k/,_x!0(L:">
+                                        <mutation items="8"></mutation>
+                                        <value name="ADD0">
+                                          <block type="text" id="GX]FwOeK-S||j)Vin9M?">
+                                            <field name="TEXT">鸽曲：</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD1">
+                                          <block type="json_getKey" id="U`9oW__;dV/Z!q=1@sjq">
+                                            <value name="VAR">
+                                              <block type="variables_get" id="@GHQ;7u.,rbO|NP8][TP">
+                                                <field name="VAR" id="_8}GhnMW5{_.-p*$_Ec4">网易云鸽曲原始数据</field>
+                                              </block>
+                                            </value>
+                                            <value name="propertyName">
+                                              <shadow type="text" id="QV,Lqq@dSg4yFPa~Y0SI">
+                                                <field name="TEXT">name</field>
+                                              </shadow>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="ADD2">
+                                          <block type="text" id="1YV$0BIW3a2IeT-G/V^X">
+                                            <field name="TEXT">  鸽手：</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD3">
+                                          <block type="json_getKey" id="z{LHsBN1KE;uFf:_bqsW">
+                                            <value name="VAR">
+                                              <block type="variables_get" id="^3sBkl,-t{-Xb[oQr~;}">
+                                                <field name="VAR" id="_8}GhnMW5{_.-p*$_Ec4">网易云鸽曲原始数据</field>
+                                              </block>
+                                            </value>
+                                            <value name="propertyName">
+                                              <shadow type="text" id="[aO,}Wn?TFNWIiZQ?XS#">
+                                                <field name="TEXT">author</field>
+                                              </shadow>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="ADD4">
+                                          <block type="text" id="tV0saciFZf,#pw92aL4/">
+                                            <field name="TEXT">\n封面：</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD5">
+                                          <block type="json_getKey" id="B,Tp:AOA)gC|e`?xK@C#">
+                                            <value name="VAR">
+                                              <block type="variables_get" id="+B4$/S%!/d2?,%v0tp3U">
+                                                <field name="VAR" id="_8}GhnMW5{_.-p*$_Ec4">网易云鸽曲原始数据</field>
+                                              </block>
+                                            </value>
+                                            <value name="propertyName">
+                                              <shadow type="text" id=")H|.7hEz~DZ%W=coN?zp">
+                                                <field name="TEXT">cover</field>
+                                              </shadow>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="ADD6">
+                                          <block type="text" id="eT`XR`Z@Z.=emTOaXAP?">
+                                            <field name="TEXT">\n直链：</field>
+                                          </block>
+                                        </value>
+                                        <value name="ADD7">
+                                          <block type="json_getKey" id="GXH7y[BJ=fi`?wC3=0fQ">
+                                            <value name="VAR">
+                                              <block type="variables_get" id="#/Xx(X#_`en_W(g$X|s-">
+                                                <field name="VAR" id="_8}GhnMW5{_.-p*$_Ec4">网易云鸽曲原始数据</field>
+                                              </block>
+                                            </value>
+                                            <value name="propertyName">
+                                              <shadow type="text" id="gT5Nu[BspXrO3^BU0-@Y">
+                                                <field name="TEXT">mp3url</field>
+                                              </shadow>
+                                            </value>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </statement>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                        <statement name="ELSE">
+                          <block type="sendmsg" id="Y.@nw|ZU9*VBZK6ViYkw">
+                            <value name="msg">
+                              <shadow type="text" id="FX86(vrrE;TDU_S=p.ie">
+                                <field name="TEXT">获取失败，请重试</field>
+                              </shadow>
+                            </value>
+                          </block>
+                        </statement>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </statement>
+        <next>
+          <block type="controls_if" id="va#)P:op/m]J^{3{)ao+">
+            <value name="IF0">
+              <block type="logic_compare" id="eeC{gW!4op`8orHh2JF|">
+                <field name="OP">EQ</field>
+                <value name="A">
+                  <block type="text_getSubstring" id="ieOu%n1!1wDPv=x85:([">
+                    <mutation at1="false" at2="true"></mutation>
+                    <field name="WHERE1">FIRST</field>
+                    <field name="WHERE2">FROM_START</field>
+                    <value name="STRING">
+                      <block type="bianliang" id=",fB%ZJBX-|(oacV*EiaR">
+                        <field name="NAME">$arg(0)</field>
+                      </block>
+                    </value>
+                    <value name="AT2">
+                      <block type="math_number" id="8!1)(DddnJ1{2*nDp:c]">
+                        <field name="NUM">8</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <value name="B">
+                  <block type="text" id="B`+/?SJ_Gc{]T%QG[~@2">
+                    <field name="TEXT">/qqmusic</field>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="DO0">
+              <block type="controls_if" id="37PGD5l_/U$^+jnAw~;j">
+                <mutation else="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_compare" id=":LE2YlE1EUcUslo(|:$:">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="text_isEmpty" id="]Mx6K_22YtFbEH[3G4*$">
+                        <value name="VALUE">
+                          <shadow type="text">
+                            <field name="TEXT"></field>
+                          </shadow>
+                          <block type="text_getSubstring" id="@r5izpgCP/!^KrhngRd$">
+                            <mutation at1="true" at2="false"></mutation>
+                            <field name="WHERE1">FROM_START</field>
+                            <field name="WHERE2">LAST</field>
+                            <value name="STRING">
+                              <block type="bianliang" id="s^/q6Qxlr}$?E^HPLhJG">
+                                <field name="NAME">$arg(0)</field>
+                              </block>
+                            </value>
+                            <value name="AT1">
+                              <block type="math_number" id="!%ow.v-xfMR@Ouzfx)?e">
+                                <field name="NUM">10</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="logic_boolean" id="-hd)(dS4_1E:=0ZI0r@M">
+                        <field name="BOOL">TRUE</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="sendmsg" id="jXq59di)WOVsTa?HFOE]">
+                    <value name="msg">
+                      <shadow type="text">
+                        <field name="TEXT"></field>
+                      </shadow>
+                      <block type="text" id="X#Hg;`^Z/ZIOBres?SSA">
+                        <field name="TEXT">歌曲解析功能列表：(回复命令即可)\n/netease &lt;歌曲ID&gt;\n/qqmusic &lt;歌曲ID&gt;</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="variables_set" id="R0y.[*|4Vww.-.}.zBY{">
+                    <field name="VAR" id="Fwq8NPFF{=A9v9uGS{XM">网易云鸽曲id</field>
+                    <value name="VALUE">
+                      <block type="text_getSubstring" id="r!D{lOWU?pu^EX@Q!}5Y">
+                        <mutation at1="true" at2="false"></mutation>
+                        <field name="WHERE1">FROM_START</field>
+                        <field name="WHERE2">LAST</field>
+                        <value name="STRING">
+                          <block type="bianliang" id="Icj^(jH9(RA.)I[NRYtm">
+                            <field name="NAME">$arg(0)</field>
+                          </block>
+                        </value>
+                        <value name="AT1">
+                          <block type="math_number" id="(yqp3sC+sM(^1aADsYAI">
+                            <field name="NUM">10</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="variables_set" id="M{d+D$m..-qX9WrvEHid">
+                        <field name="VAR" id="reTl.gvx4vBF+Oy9Nh|j">HTTP响应内容</field>
+                        <value name="VALUE">
+                          <block type="access" id="@UmU]#|4^-oo!Ot~m6Sd">
+                            <value name="url">
+                              <block type="text_join" id="]qH|16tP%PBOKbahedd~">
+                                <mutation items="3"></mutation>
+                                <value name="ADD0">
+                                  <block type="text" id="}:3,q%[zW5UkstrilTu,">
+                                    <field name="TEXT">https://tenapi.cn/music/?id=</field>
+                                  </block>
+                                </value>
+                                <value name="ADD1">
+                                  <block type="variables_get" id="VOTq(D!;`dFUNT]HBR.Y">
+                                    <field name="VAR" id="e5gdeGiZoSFlcy=bc70D">QQ鸽曲id</field>
+                                  </block>
+                                </value>
+                                <value name="ADD2">
+                                  <block type="text" id="N1$wbrRPxJ,J7-YFs+AH">
+                                    <field name="TEXT">&amp;type=song&amp;media=tencent</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <next>
+                          <block type="controls_if" id="KrEC/6T*AWhpz!SSCs;k">
+                            <mutation else="1"></mutation>
+                            <value name="IF0">
+                              <block type="logic_compare" id="_aKt*SV5m`viIJ-z1y^+">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                  <block type="text_isEmpty" id="c2CX}KQMe?BxAW/+7QG$">
+                                    <value name="VALUE">
+                                      <shadow type="text">
+                                        <field name="TEXT"></field>
+                                      </shadow>
+                                      <block type="variables_get" id="N}(DCL+-Uob/1_$R`WC7">
+                                        <field name="VAR" id="reTl.gvx4vBF+Oy9Nh|j">HTTP响应内容</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="logic_boolean" id="aMb~+t?yZ=Mnf-V3~Pxb">
+                                    <field name="BOOL">FALSE</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="DO0">
+                              <block type="variables_set" id="Z{ilB~:ed(nb:7K5zECP">
+                                <field name="VAR" id="CU.*s{VhAQ%YS^n@mCuT">QQ鸽曲原始数据</field>
+                                <value name="VALUE">
+                                  <block type="json_parse" id="%[,s]:FP5Y+w2*-9!9C{">
+                                    <value name="content">
+                                      <block type="variables_get" id="@@=+)a7/+#){xLhf`.X=">
+                                        <field name="VAR" id="reTl.gvx4vBF+Oy9Nh|j">HTTP响应内容</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="controls_if" id="o8$IIJ^f0V~UXR{gQIY:">
+                                    <mutation elseif="1"></mutation>
+                                    <value name="IF0">
+                                      <block type="logic_compare" id="Q3SN}~7B)PjXyabu3ZpH">
+                                        <field name="OP">EQ</field>
+                                        <value name="A">
+                                          <block type="json_getKey" id="tA6PW{N@hWrny1G6];ub">
+                                            <value name="VAR">
+                                              <block type="variables_get" id="BhR0sX)T%==:d*3k~q}T">
+                                                <field name="VAR" id="CU.*s{VhAQ%YS^n@mCuT">QQ鸽曲原始数据</field>
+                                              </block>
+                                            </value>
+                                            <value name="propertyName">
+                                              <shadow type="text" id="Eu#{l`PYRJ=NR!mh##Ol">
+                                                <field name="TEXT">name</field>
+                                              </shadow>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="text" id="v5iQUi#@Az*RrffQKw9O">
+                                            <field name="TEXT">null</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <statement name="DO0">
+                                      <block type="sendmsg" id="nCUD^JWEfG5zV$P~/[Cc">
+                                        <value name="msg">
+                                          <shadow type="text" id="|sbX?t#M|np0jc%r27).">
+                                            <field name="TEXT">错误：我都没见过这首鸽曲</field>
+                                          </shadow>
+                                        </value>
+                                      </block>
+                                    </statement>
+                                    <value name="IF1">
+                                      <block type="logic_compare" id="+Upi,PXJOcLTc_+L;_ev">
+                                        <field name="OP">NEQ</field>
+                                        <value name="A">
+                                          <block type="json_getKey" id="_M+Czb#oQBL7BH+Sm+vW">
+                                            <value name="VAR">
+                                              <block type="variables_get" id="Ufo;G[.B)6g#0z4bvXAa">
+                                                <field name="VAR" id="CU.*s{VhAQ%YS^n@mCuT">QQ鸽曲原始数据</field>
+                                              </block>
+                                            </value>
+                                            <value name="propertyName">
+                                              <shadow type="text" id="I[E^/[f,L7W|IYNftj_G">
+                                                <field name="TEXT">name</field>
+                                              </shadow>
+                                            </value>
+                                          </block>
+                                        </value>
+                                        <value name="B">
+                                          <block type="text" id="f,+#.5va_FAY+xko7%=k">
+                                            <field name="TEXT">null</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <statement name="DO1">
+                                      <block type="sendmsg" id="A3p)Igag,}:4_B%Wfv]M">
+                                        <value name="msg">
+                                          <shadow type="text">
+                                            <field name="TEXT"></field>
+                                          </shadow>
+                                          <block type="text_join" id="fZt#wTqYcmYKMuy*z%sh">
+                                            <mutation items="8"></mutation>
+                                            <value name="ADD0">
+                                              <block type="text" id="Q#wvF-q16I!95EkT({?p">
+                                                <field name="TEXT">鸽曲：</field>
+                                              </block>
+                                            </value>
+                                            <value name="ADD1">
+                                              <block type="json_getKey" id="xVp*ZU5,9[[WR%Vpz%!S">
+                                                <value name="VAR">
+                                                  <block type="variables_get" id="D8U8gWE{XUb!(Rg({@,f">
+                                                    <field name="VAR" id="CU.*s{VhAQ%YS^n@mCuT">QQ鸽曲原始数据</field>
+                                                  </block>
+                                                </value>
+                                                <value name="propertyName">
+                                                  <shadow type="text" id="q{64.fslk!FdQA,xWJxy">
+                                                    <field name="TEXT">name</field>
+                                                  </shadow>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <value name="ADD2">
+                                              <block type="text" id="Y,bpP#9TZ~u%r:ICsuns">
+                                                <field name="TEXT">  鸽手：</field>
+                                              </block>
+                                            </value>
+                                            <value name="ADD3">
+                                              <block type="json_getKey" id="[L;oer=Y=T:Abz52c1I5">
+                                                <value name="VAR">
+                                                  <block type="variables_get" id="xSFd9W9}{]BK~q`b}sa~">
+                                                    <field name="VAR" id="CU.*s{VhAQ%YS^n@mCuT">QQ鸽曲原始数据</field>
+                                                  </block>
+                                                </value>
+                                                <value name="propertyName">
+                                                  <shadow type="text" id="ejtx}Qn!+wgSnZ/Hw.T/">
+                                                    <field name="TEXT">author</field>
+                                                  </shadow>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <value name="ADD4">
+                                              <block type="text" id="j5LXIstMtRUf=9?vEC+~">
+                                                <field name="TEXT">\n封面：</field>
+                                              </block>
+                                            </value>
+                                            <value name="ADD5">
+                                              <block type="json_getKey" id="R=qt{!y6.{65n1GAC|[X">
+                                                <value name="VAR">
+                                                  <block type="variables_get" id=").}Xwy%=a}Rf%tke!365">
+                                                    <field name="VAR" id="CU.*s{VhAQ%YS^n@mCuT">QQ鸽曲原始数据</field>
+                                                  </block>
+                                                </value>
+                                                <value name="propertyName">
+                                                  <shadow type="text" id="J/wzBG#*`1dxP5l:~#wn">
+                                                    <field name="TEXT">cover</field>
+                                                  </shadow>
+                                                </value>
+                                              </block>
+                                            </value>
+                                            <value name="ADD6">
+                                              <block type="text" id="!f_oJjFC8?-b%v+3~dOH">
+                                                <field name="TEXT">\n直链：</field>
+                                              </block>
+                                            </value>
+                                            <value name="ADD7">
+                                              <block type="json_getKey" id="7QKaC(*L4;ehEeM)V7zX">
+                                                <value name="VAR">
+                                                  <block type="variables_get" id="lt]C!t:9o1RVU%ihdo+g">
+                                                    <field name="VAR" id="CU.*s{VhAQ%YS^n@mCuT">QQ鸽曲原始数据</field>
+                                                  </block>
+                                                </value>
+                                                <value name="propertyName">
+                                                  <shadow type="text" id="_o2H#8*S.gU(w),?15%.">
+                                                    <field name="TEXT">mp3url</field>
+                                                  </shadow>
+                                                </value>
+                                              </block>
+                                            </value>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </statement>
+                                  </block>
+                                </next>
+                              </block>
+                            </statement>
+                            <statement name="ELSE">
+                              <block type="sendmsg" id="FUSJ|1j2J*_/rY54AGYu">
+                                <value name="msg">
+                                  <shadow type="text" id="RF;D0,f8BfJCOP#nBc2E">
+                                    <field name="TEXT">获取失败，请重试</field>
+                                  </shadow>
+                                </value>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>

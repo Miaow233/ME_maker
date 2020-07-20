@@ -188,3 +188,21 @@ Blockly.Blocks['setcontinue'] = {
         this.setHelpUrl("");
     }
 };
+
+Blockly.Blocks['log'] = {
+    init: function() {
+      this.appendDummyInput()
+          .appendField("输出")
+          .appendField(new Blockly.FieldDropdown([["消息","i"], ["警告","w"], ["错误","e"]]), "type")
+          .appendField("日志");
+      this.appendValueInput("msg")
+          .setCheck(null)
+          .setAlign(Blockly.ALIGN_RIGHT)
+          .appendField("日志内容");
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour(290);
+   this.setTooltip("");
+   this.setHelpUrl("");
+    }
+  };

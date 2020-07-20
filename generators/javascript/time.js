@@ -9,28 +9,30 @@ Blockly.JavaScript['time'] = function (block) {
 
 
 Blockly.JavaScript['time2day'] = function (block) {
-    var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+    var value_timestamp = Blockly.JavaScript.valueToCode(block, 'timeStamp', Blockly.JavaScript.ORDER_ATOMIC);
+    var value_fmt = Blockly.JavaScript.valueToCode(block, 'fmt', Blockly.JavaScript.ORDER_ATOMIC);
     var getCompareFunctionName = Blockly.JavaScript.provideFunction_(
-        'getTsFormatDate',
+        'timeFormat',
         ['function ' + Blockly.JavaScript.FUNCTION_NAME_PLACEHOLDER_ +
-            '(timeStamp) {',
-            '  var date = new Date(timeStamp);',
-            '  var seperator1 = "-";',
-            '  var year = date.getFullYear();',
-            '  var month = date.getMonth() + 1;',
-            '  var strDate = date.getDate();',
-            '  if (month >= 1 && month <= 9) {',
-            '      month = "0" + month;',
-            '  }',
-            '  if (strDate >= 0 && strDate <= 9) {',
-            '      strDate = "0" + strDate;',
-            '  }',
-            '  var currentdate = year + seperator1 + month + seperator1 + strDate;',
-            '  return currentdate;',
+            '(fmt, timeStamp) {',
+            '  let ret;',
+            '  let opt = {',
+            '      "Y+": timeStamp.getFullYear().toString(),', // 年
+            '      "m+": (timeStamp.getMonth() + 1).toString(),', // 月
+            '      "d+": timeStamp.getDate().toString(),', // 日
+            '      "H+": timeStamp.getHours().toString(),', // 时
+            '      "M+": timeStamp.getMinutes().toString(),', // 分
+            '      "S+": timeStamp.getSeconds().toString()', // 秒
+            // 有其他格式化字符需求可以继续添加，必须转化成字符串
+            '  };',
+            '  for (let k in opt) {',
+            '      ret = new RegExp("(" + k + ")").exec(fmt);',
+            '      if (ret) {',
+            '          fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))',
+            '      };',
+            '  };',
+            '  return fmt;',
             '}'
         ]);
-    return [
-        getCompareFunctionName + '(' + value_name + ')',
-        Blockly.JavaScript.ORDER_FUNCTION_CALL
-    ];
+    return [getCompareFunctionName + '(' + value_fmt + ',' + value_timestamp + ')', Blockly.JavaScript.ORDER_FUNCTION_CALL];
 };
