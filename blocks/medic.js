@@ -77,18 +77,18 @@ Blockly.Blocks['addimg'] = {
 };
 
 Blockly.Blocks['addat'] = {
-    init: function() {
-      this.appendDummyInput()
-          .appendField("添加艾特")
-          .appendField(new Blockly.FieldTextInput("$uin"), "uin")
-          .appendField(new Blockly.FieldTextInput("$nick"), "nick");
-      this.setPreviousStatement(true, null);
-      this.setNextStatement(true, null);
-      this.setColour(290);
-   this.setTooltip("");
-   this.setHelpUrl("");
+    init: function () {
+        this.appendDummyInput()
+            .appendField("添加艾特")
+            .appendField(new Blockly.FieldTextInput("$uin"), "uin")
+            .appendField(new Blockly.FieldTextInput("$nick"), "nick");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(290);
+        this.setTooltip("");
+        this.setHelpUrl("");
     }
-  };
+};
 
 
 Blockly.Blocks['readfile'] = {
@@ -190,19 +190,72 @@ Blockly.Blocks['setcontinue'] = {
 };
 
 Blockly.Blocks['log'] = {
-    init: function() {
-      this.appendDummyInput()
-          .appendField("输出")
-          .appendField(new Blockly.FieldDropdown([["消息","i"], ["警告","w"], ["错误","e"]]), "type")
-          .appendField("日志");
-      this.appendValueInput("msg")
-          .setCheck(null)
-          .setAlign(Blockly.ALIGN_RIGHT)
-          .appendField("日志内容");
-      this.setPreviousStatement(true, null);
-      this.setNextStatement(true, null);
-      this.setColour(290);
-   this.setTooltip("");
-   this.setHelpUrl("");
+    init: function () {
+        this.appendDummyInput()
+            .appendField("输出")
+            .appendField(new Blockly.FieldDropdown([
+                ["消息", "i"],
+                ["警告", "w"],
+                ["错误", "e"]
+            ]), "type")
+            .appendField("日志");
+        this.appendValueInput("msg")
+            .setCheck(null)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("日志内容");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(290);
+        this.setTooltip("");
+        this.setHelpUrl("");
     }
-  };
+};
+
+Blockly.Blocks['grouplist'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("获取机器人加的所有群");
+        this.setOutput(true, null);
+        this.setColour(285);
+        this.setTooltip("获取群列表");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['membersof'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("群成员列表");
+        this.appendValueInput("group")
+            .setCheck("Number")
+            .appendField("群号");
+        this.setOutput(true, null);
+        this.setColour(285);
+        this.setTooltip("返回群成员列表可一次获取多个群");
+        this.setHelpUrl("");
+    }
+};
+
+Blockly.Blocks['mute'] = {
+    init: function () {
+        this.appendDummyInput()
+            .appendField("禁言指定Q号");
+        this.appendValueInput("group")
+            .setCheck(null)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("群号");
+        this.appendValueInput("member")
+            .setCheck(null)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("Q号");
+        this.appendValueInput("time")
+            .setCheck(null)
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField("时长(秒)");
+        this.setPreviousStatement(true, null);
+        this.setNextStatement(true, null);
+        this.setColour(285);
+        this.setTooltip("");
+        this.setHelpUrl("");
+    }
+};

@@ -151,7 +151,9 @@ Blockly.JavaScript.init = function(workspace) {
   // Declare all of the variables.
   if (defvars.length) {
     Blockly.JavaScript.definitions_['variables'] =
-        'var ' + defvars.join(', ') + ';';
+    '//替换为词条\n'+
+    'JS\n'+
+    'var ' + defvars.join(', ') + ';';
   }
 };
 
