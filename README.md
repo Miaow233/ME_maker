@@ -2,7 +2,7 @@
 
 基于web的可视化程序编辑器。可将块拖在一起来构建JS词库。
 
-依赖于[Google blockly](https://developers.google.com/blockly/)
+依赖于[Google blockly](https://github.com/google/blockly)
 
 Demo 地址
 > [https://miaow233.github.io/ME_maker/](https://miaow233.github.io/ME_maker/)
