@@ -1,58 +1,59 @@
-'use strict';
-
-Blockly.JavaScript.json_createJson = function (b) {
-	var a = "{}";
-	return [a, Blockly.JavaScript.ORDER_ATOMIC]
-};
-
-Blockly.JavaScript.json_getLength = function (c) {
-	var a = Blockly.JavaScript.valueToCode(c, "NAME", Blockly.JavaScript.ORDER_ATOMIC);
-	var b = "Object.keys(" + a + ").length";
-	return [b, Blockly.JavaScript.ORDER_ATOMIC]
-};
-
-Blockly.JavaScript.json_setKey = function (e) {
-	var d = Blockly.JavaScript.valueToCode(e, "VAR", Blockly.JavaScript.ORDER_ATOMIC);
-	var a = Blockly.JavaScript.valueToCode(e, "propertyName", Blockly.JavaScript.ORDER_ATOMIC);
-	var c = Blockly.JavaScript.valueToCode(e, "valueName", Blockly.JavaScript.ORDER_ATOMIC);
-	var b = d + "[" + a + "] = " + c + ";\n";
-	return b
-};
-
-Blockly.JavaScript.json_deleteKey = function (d) {
-	var c = Blockly.JavaScript.valueToCode(d, "VAR", Blockly.JavaScript.ORDER_ATOMIC);
-	var a = Blockly.JavaScript.valueToCode(d, "propertyName", Blockly.JavaScript.ORDER_ATOMIC);
-	var b = "delete " + c + "[" + a + "];\n";
-	return b
-};
-
-
-Blockly.JavaScript.json_stringify = function (d) {
-	var c = Blockly.JavaScript.valueToCode(d, "text", Blockly.JavaScript.ORDER_ATOMIC);
-	if (c == "" || c == null) {
-		c = "[]"
-	}
-	var b = "JSON.stringify(" + c + ")";
-	return [b, Blockly.JavaScript.ORDER_ATOMIC]
-};
-
-Blockly.JavaScript.json_parse = function (b) {
-	var c = Blockly.JavaScript.valueToCode(b, "content", Blockly.JavaScript.ORDER_ATOMIC);
-	var a = "JSON.parse(" + c + ")";
-	return [a, Blockly.JavaScript.ORDER_ATOMIC]
-};
-/*
 Blockly.JavaScript['json_getkey'] = function (block) {
 	var value_var = Blockly.JavaScript.valueToCode(block, 'VAR', Blockly.JavaScript.ORDER_ATOMIC);
 	var value_propertyname = Blockly.JavaScript.valueToCode(block, 'propertyName', Blockly.JavaScript.ORDER_ATOMIC);
-	var code = value_var + '[' + value_propertyname + ']';
+	// TODO: Assemble JavaScript into code variable.
+	var code = value_var + "[" + value_propertyname + "]";
 	// TODO: Change ORDER_NONE to the correct strength.
 	return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
-*/
-Blockly.JavaScript.json_getKey = function (d) {
-	var c = Blockly.JavaScript.valueToCode(d, "VAR", Blockly.JavaScript.ORDER_ATOMIC);
-	var a = Blockly.JavaScript.valueToCode(d, "propertyName", Blockly.JavaScript.ORDER_ATOMIC);
-	var b = c + "[" + a + "]";
-	return [b, Blockly.JavaScript.ORDER_ATOMIC]
+
+Blockly.JavaScript['json_deletekey'] = function (block) {
+	var value_var = Blockly.JavaScript.valueToCode(block, 'VAR', Blockly.JavaScript.ORDER_ATOMIC);
+	var value_propertyname = Blockly.JavaScript.valueToCode(block, 'propertyName', Blockly.JavaScript.ORDER_ATOMIC);
+	// TODO: Assemble JavaScript into code variable.
+	var code = "delete " + value_var + "[" + value_propertyname + "];\n";
+	return code;
+};
+
+Blockly.JavaScript['json_setkey'] = function (block) {
+	var value_var = Blockly.JavaScript.valueToCode(block, 'VAR', Blockly.JavaScript.ORDER_ATOMIC);
+	var value_propertyname = Blockly.JavaScript.valueToCode(block, 'propertyName', Blockly.JavaScript.ORDER_ATOMIC);
+	var value_valuename = Blockly.JavaScript.valueToCode(block, 'valueName', Blockly.JavaScript.ORDER_ATOMIC);
+	// TODO: Assemble JavaScript into code variable.
+	var code = value_var + "[" + value_propertyname + "] = " + value_valuename + ";\n";
+	return code;
+};
+
+Blockly.JavaScript['json_getlength'] = function (block) {
+	var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
+	// TODO: Assemble JavaScript into code variable.
+	var code = "Object.keys(" + value_name + ").length";
+	// TODO: Change ORDER_NONE to the correct strength.
+	return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['json_createjson'] = function (block) {
+	// TODO: Assemble JavaScript into code variable.
+	var code = "{}";
+	// TODO: Change ORDER_NONE to the correct strength.
+	return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['json_stringify'] = function (block) {
+	var value_text = Blockly.JavaScript.valueToCode(block, 'text', Blockly.JavaScript.ORDER_ATOMIC);
+	// TODO: Assemble JavaScript into code variable.
+	if (value_text == "" || value_text == null) {
+		value_text = "[]"
+	}
+	var code = "JSON.stringify(" + value_text + ")";
+	// TODO: Change ORDER_NONE to the correct strength.
+	return [code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['json_parse'] = function (block) {
+	var value_content = Blockly.JavaScript.valueToCode(block, 'content', Blockly.JavaScript.ORDER_ATOMIC);
+	// TODO: Assemble JavaScript into code variable.
+	var code = "JSON.parse(" + value_content + ")";
+	// TODO: Change ORDER_NONE to the correct strength.
+	return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
