@@ -378,20 +378,37 @@ Code.init = function() {
   toolboxText = toolboxText.replace(/(^|[^%]){(\w+)}/g,
       function(m, p1, p2) {return p1 + MSG[p2];});
   var toolboxXml = Blockly.Xml.textToDom(toolboxText);
-
-  Code.workspace = Blockly.inject('content_blocks',
-      {grid:
-          {spacing: 25,
-           length: 3,
-           colour: '#ccc',
-           snap: true},
-       media: 'media/',
-       rtl: rtl,
-       toolbox: toolboxXml,
-       zoom:
-           {controls: true,
-            wheel: true}
-      });
+  var options = { 
+    toolbox : toolbox, 
+    collapse : true, 
+    comments : true, 
+    disable : true, 
+    maxBlocks : Infinity, 
+    trashcan : true, 
+    horizontalLayout : false, 
+    toolboxPosition : 'start', 
+    css : true, 
+    media : 'media/', 
+    rtl : false, 
+    scrollbars : true, 
+    sounds : true, 
+    oneBasedIndex : true, 
+    grid : {
+      spacing : 20, 
+      length : 1, 
+      colour : '#888', 
+      snap : true
+    }, 
+    zoom : {
+      controls : true, 
+      wheel : true, 
+      startScale : 1, 
+      maxScale : 3, 
+      minScale : 0.3, 
+      scaleSpeed : 1.2
+    }
+  };
+  Code.workspace = Blockly.inject('content_blocks',options);
 
   // Add to reserved word list: Local variables in execution environment (runJS)
   // and the infinite loop detection function.
