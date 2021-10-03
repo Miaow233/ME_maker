@@ -1,6 +1,6 @@
 Blockly.JavaScript['send'] = function(block) {
   // TODO: Assemble JavaScript into code variable.
-  var code = `$.send();\n`;
+  var code = `$.send()`;
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
@@ -29,7 +29,7 @@ Blockly.JavaScript['send_xml'] = function(block) {
 Blockly.JavaScript['send_ptt'] = function(block) {
   var value_name = Blockly.JavaScript.valueToCode(block, 'NAME', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
-  var code = `$.sendMsPtt(${value_name});\n`;
+  var code = `$.sendPtt(${value_name});\n`;
   return code;
 };
 
