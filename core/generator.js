@@ -327,6 +327,21 @@ Generator.prototype.statementToCode = function(block, name) {
   }
   return code;
 };
+Generator.prototype.statementToCodeWithoutSpaces = function(block, name) {
+  const targetBlock = block.getInputTargetBlock(name);
+  let code = this.blockToCode(targetBlock);
+  // Value blocks must return code and order of operations info.
+  // Statement blocks must only return code.
+  if (typeof code != 'string') {
+    throw TypeError(
+        'Expecting code from statement block: ' +
+        (targetBlock && targetBlock.type));
+  }
+  if (code) {
+    code = this.prefixLines(/** @type {string} */ (code), '');
+  }
+  return code;
+};
 
 /**
  * Add an infinite loop trap to the contents of a loop.
