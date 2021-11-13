@@ -10,7 +10,33 @@ document.addEventListener("DOMContentLoaded", function () {
     const workspace = Blockly.inject('blocklyDiv',
         {
             toolbox: document.getElementById('toolbox'),
-            media: 'media/'
+            collapse: true,
+            comments: true,
+            disable: true,
+            maxBlocks: Infinity,
+            trashcan: true,
+            horizontalLayout: false,
+            toolboxPosition: 'start',
+            css: true,
+            media: 'media/',
+            rtl: false,
+            scrollbars: true,
+            sounds: false,
+            oneBasedIndex: true,
+            grid: {
+                spacing: 20,
+                length: 1,
+                colour: '#888',
+                snap: false
+            },
+            zoom: {
+                controls: true,
+                wheel: true,
+                startScale: 1,
+                maxScale: 3,
+                minScale: 0.3,
+                scaleSpeed: 1.2
+            }
         });
 
     const lang = 'JavaScript';
