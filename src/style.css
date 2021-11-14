@@ -20,3 +20,10 @@
 #blocklyDiv {
     height: 100%;
 }
+
+#menu { 
+  position: absolute;
+  z-index: 999;
+  left: 20px;
+  bottom: 20px;
+}
