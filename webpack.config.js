@@ -13,9 +13,10 @@ const stylesHandler = isProduction
     : "style-loader";
 
 const config = {
-    target: 'web',
+    target: "web",
     entry: {
         index: "./src/index.js",
+        setting: "./src/setting.js"
     },
     output: {
         path: path.resolve(__dirname, "dist"),
@@ -28,7 +29,7 @@ const config = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: "index.html",
+            template: "./public/index.html",
         }),
 
         new CopyPlugin([
