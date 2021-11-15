@@ -1,3 +1,5 @@
+import { saveAs } from 'file-saver';
+
 import * as Blockly from 'blockly/core';
 import 'blockly/blocks';
 import './blocks/api';
@@ -53,8 +55,11 @@ document.addEventListener("DOMContentLoaded", function () {
     button.addEventListener('click', function () {
         //alert("Check the console for the generated output.");
         const code = Blockly[lang].workspaceToCode(workspace);
-        console.log(code);
-        alert(code);
+        const name = prompt('要保存的JS文件名');
+        if (name){
+          const blob = new Blob([code], { type: "text/plain;charset=utf-8" });
+          saveAs(blob, name + ".js");
+        };
     })
 });
 /**
