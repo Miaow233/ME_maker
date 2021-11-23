@@ -6,12 +6,14 @@
   right: 0;
   overflow: visible;
   background-color: #0097a7;
-  box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
   margin: 10px;
   padding: 12px;
 }
-label, button, input {
-  background-color: #7F9CCB;
+label,
+button,
+input {
+  background-color: #7f9ccb;
   padding: 5px 10px;
   border-radius: 5px;
   border: 1px ridge black;
@@ -19,12 +21,14 @@ label, button, input {
   height: auto;
   margin: 3px;
 }
-label:hover, button:hover {
-  background-color: #2D5BA3;
+label:hover,
+button:hover {
+  background-color: #2d5ba3;
   color: white;
 }
-label:active, button:active {
-  background-color: #0D3F8F;
+label:active,
+button:active {
+  background-color: #0d3f8f;
   color: white;
 }
 #blocklyDiv {
