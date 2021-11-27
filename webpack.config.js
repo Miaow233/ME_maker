@@ -14,12 +14,10 @@ const stylesHandler = isProduction
 
 const config = {
   target: "web",
-  entry: {
-    index: "./src/index.js",
-    setting: "./src/setting.js",
-  },
+  entry: "./src/main.js",
   output: {
     path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
     clean: true,
   },
   devServer: {
