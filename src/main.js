@@ -5,7 +5,7 @@ import "blockly/blocks";
 import "blockly/javascript";
 import "./medic"
 
-import { Message, Date} from "./message";
+import { Message } from "./message";
 import "./jquery-3.6.0-min";
 
 import BlocklyStorage from "./storage";

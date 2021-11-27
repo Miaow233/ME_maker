@@ -1,12 +1,12 @@
 'use strict';
 
-var Messages = {};
+var Message = {};
 
 /**
  * 显示消息提示
  * @param {any} msg
  */
-Messages.Show = function (msg, hasOkBtn) {
+Message.Show = function (msg, hasOkBtn) {
     var msgbg = $('#message');
     var content = msgbg.children('div.panel-content');
     content.css('height', 'auto');
@@ -29,7 +29,7 @@ Messages.Show = function (msg, hasOkBtn) {
 /**
  * 隐藏消息提示
  * */
-Messages.Hide = function () {
+Message.Hide = function () {
     var msgbg = $('#message');
     var content = msgbg.children('div.panel-content');
     content.animate({ height: '0px', marginTop: '0px' }, 100, function () {
@@ -50,7 +50,7 @@ window.addEventListener('load', function(){
         if($('div#xml-operation>input.project-name').val().length > 0){
             Code.saveProject();
         } else {
-            Messages.Show('<p style="color:#666">【错误】保存项目</p><p>项目名不能为空</p>');
+            Message.Show('<p style="color:#666">【错误】保存项目</p><p>项目名不能为空</p>');
         }
     });
     // 导出 Gradle 项目按钮
@@ -63,7 +63,7 @@ window.addEventListener('load', function(){
     });
     // 友情链接
     $('a.friend-links').on('click', function () {
-        Messages.Show('<p style="color:#666">友情链接</p><p>MiraiForum <a class="light-link" href="https://mirai.mamoe.net/" target="_blank">https://mirai.mamoe.net/</a></p>');
+        Message.Show('<p style="color:#666">友情链接</p><p>MiraiForum <a class="light-link" href="https://mirai.mamoe.net/" target="_blank">https://mirai.mamoe.net/</a></p>');
     });
     // 链接-打开文件夹
     $('a.folder-link').on('click', function(){
@@ -99,4 +99,4 @@ Date.prototype.format = function (fmt) {
     return fmt;
 };
 
-export { Message, Date };
+export { Message };
