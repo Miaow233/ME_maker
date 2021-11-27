@@ -3,7 +3,7 @@ import { saveAs } from "file-saver";
 import * as Blockly from "blockly/core";
 import "blockly/blocks";
 import "blockly/javascript";
-import "./medic"
+import "./medic";
 
 import { Message } from "./message";
 import "./jquery-3.6.0-min";
@@ -46,37 +46,37 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-  const lang = "JavaScript";
-  document.getElementById("code").addEventListener("click", function () {
-    const code = Blockly[lang].workspaceToCode(workspace);
-    const name = prompt("要保存的JS文件名");
-    if (name) {
-      const blob = new Blob([code], { type: "text/plain;charset=utf-8" });
-      saveAs(blob, name + ".js");
-    }
-  });
+const lang = "JavaScript";
+document.getElementById("code").addEventListener("click", function () {
+  const code = Blockly[lang].workspaceToCode(workspace);
+  const name = prompt("要保存的JS文件名");
+  if (name) {
+    const blob = new Blob([code], { type: "text/plain;charset=utf-8" });
+    saveAs(blob, name + ".js");
+  }
+});
 
-  const input = document.querySelector("input");
-  input.style.opacity = 0;
-  document.getElementById("import").addEventListener("change", function () {
-    var reader = new FileReader();
-    if (this.files[0].type === "text/xml") {
-      reader.readAsText(this.files[0]);
-      reader.onload = function (evt) {
-        var xml = Blockly.Xml.textToDom(evt.target.result);
-        Blockly.Xml.domToWorkspace(xml, workspace);
-      };
-    } else {
-      Message.Show("请选择一个xml文件");
-    }
-  });
+const input = document.querySelector("input");
+input.style.opacity = 0;
+document.getElementById("import").addEventListener("change", function () {
+  var reader = new FileReader();
+  if (this.files[0].type === "text/xml") {
+    reader.readAsText(this.files[0]);
+    reader.onload = function (evt) {
+      var xml = Blockly.Xml.textToDom(evt.target.result);
+      Blockly.Xml.domToWorkspace(xml, workspace);
+    };
+  } else {
+    Message.Show("请选择一个xml文件");
+  }
+});
 
-  document.getElementById("export").addEventListener("click", function () {
-    const xml = Blockly.Xml.workspaceToDom(workspace);
-    const text = Blockly.Xml.domToText(xml);
-    const name = prompt("要保存的文件名");
-    if (name) {
-      const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
-      saveAs(blob, name + ".xml");
-    }
-  });
+document.getElementById("export").addEventListener("click", function () {
+  const xml = Blockly.Xml.workspaceToDom(workspace);
+  const text = Blockly.Xml.domToText(xml);
+  const name = prompt("要保存的文件名");
+  if (name) {
+    const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+    saveAs(blob, name + ".xml");
+  }
+});
