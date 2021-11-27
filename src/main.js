@@ -3,9 +3,9 @@ import { saveAs } from "file-saver";
 import * as Blockly from "blockly/core";
 import "blockly/blocks";
 import "blockly/javascript";
-import * from "./medic"
+import "./medic"
 
-import * from "./message";
+import { Message, Date} from "./message";
 import "./jquery-3.6.0-min";
 
 import BlocklyStorage from "./storage";
